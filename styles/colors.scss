@@ -1,0 +1,44 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+$dark-blue: $blue-100;
+$light-blue: $cyan-100;
+$teal: $teal-100;
+$green: $green-100;
+$yellow: $yellow-100;
+$orange: $orange-100;
+$red: $red-100;
+$pink: $pink-100;
+$purple: $purple-100;
+$gray: $gray-200;
+
+.dark-blue {
+  background-color: $dark-blue;
+}
+.light-blue {
+  background-color: $light-blue;
+}
+.teal {
+  background-color: $teal;
+}
+.green {
+  background-color: $green;
+}
+.yellow {
+  background-color: $yellow;
+}
+.orange {
+  background-color: $orange;
+}
+.red {
+  background-color: $red;
+}
+.pink {
+  background-color: $pink;
+}
+.purple {
+  background-color: $purple;
+}
+.gray {
+  background-color: $gray;
+}

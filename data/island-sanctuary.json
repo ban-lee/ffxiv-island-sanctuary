@@ -1,0 +1,1441 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "item": "Isleworks Potion",
+      "material1": {
+        "id": 0,
+        "qty": 2,
+        "item": "Island Palm Leaf"
+      },
+      "material2": {
+        "id": 7,
+        "qty": 2,
+        "item": "Islewort"
+      },
+      "purposeCat": "Concoctions",
+      "materialCat": "",
+      "rank": 1,
+      "time": 4,
+      "value": 28
+    },
+    {
+      "id": 2,
+      "item": "Isleworks Firesand",
+      "material1": {
+        "id": 8,
+        "qty": 2,
+        "item": "Island Sand"
+      },
+      "material2": {
+        "id": 14,
+        "qty": 1,
+        "item": "Island Limestone"
+      },
+      "purposeCat": "Concoctions",
+      "materialCat": "Unburied Treasures",
+      "rank": 1,
+      "time": 4,
+      "value": 28,
+      "material3": {
+        "id": 7,
+        "qty": 1,
+        "item": "Islewort"
+      }
+    },
+    {
+      "id": 3,
+      "item": "Isleworks Wooden Chair",
+      "material1": {
+        "id": 9,
+        "qty": 4,
+        "item": "Island Log"
+      },
+      "material2": {
+        "id": 11,
+        "qty": 2,
+        "item": "Island Vine"
+      },
+      "purposeCat": "Furnishings",
+      "materialCat": "Woodworks",
+      "rank": 1,
+      "time": 6,
+      "value": 42
+    },
+    {
+      "id": 4,
+      "item": "Isleworks Grilled Clam",
+      "material1": {
+        "id": 4,
+        "qty": 2,
+        "item": "Island Clam"
+      },
+      "material2": {
+        "id": 5,
+        "qty": 2,
+        "item": "Island Laver"
+      },
+      "purposeCat": "Foodstuffs",
+      "materialCat": "Marine Merchandise",
+      "rank": 1,
+      "time": 4,
+      "value": 28
+    },
+    {
+      "id": 5,
+      "item": "Isleworks Necklace",
+      "material1": {
+        "id": 2,
+        "qty": 3,
+        "item": "Island Branch"
+      },
+      "material2": {
+        "id": 11,
+        "qty": 1,
+        "item": "Island Vine"
+      },
+      "purposeCat": "Accessories",
+      "materialCat": "Woodworks",
+      "rank": 1,
+      "time": 4,
+      "value": 28
+    },
+    {
+      "id": 6,
+      "item": "Isleworks Coral Ring",
+      "material1": {
+        "id": 6,
+        "qty": 3,
+        "item": "Island Coral"
+      },
+      "material2": {
+        "id": 11,
+        "qty": 3,
+        "item": "Island Vine"
+      },
+      "purposeCat": "Accessories",
+      "materialCat": "Marine Merchandise",
+      "rank": 1,
+      "time": 6,
+      "value": 42
+    },
+    {
+      "id": 7,
+      "item": "Isleworks Barbut",
+      "material1": {
+        "id": 13,
+        "qty": 3,
+        "item": "Island Copper Ore"
+      },
+      "material2": {
+        "id": 8,
+        "qty": 3,
+        "item": "Island Sand"
+      },
+      "purposeCat": "Attire",
+      "materialCat": "Metalworks",
+      "rank": 1,
+      "time": 6,
+      "value": 42
+    },
+    {
+      "id": 8,
+      "item": "Isleworks Macuahuitl",
+      "material1": {
+        "id": 10,
+        "qty": 3,
+        "item": "Island Palm Log"
+      },
+      "material2": {
+        "id": 3,
+        "qty": 3,
+        "item": "Island Stone"
+      },
+      "purposeCat": "Arms",
+      "materialCat": "Woodworks",
+      "rank": 1,
+      "time": 6,
+      "value": 42
+    },
+    {
+      "id": 9,
+      "item": "Isleworks Sauerkraut",
+      "material1": {
+        "id": 43,
+        "qty": 1,
+        "item": "Island Cabbage"
+      },
+      "material2": {
+        "id": 15,
+        "qty": 3,
+        "item": "Island Rock Salt"
+      },
+      "purposeCat": "Preserved Food",
+      "materialCat": "",
+      "rank": 1,
+      "time": 4,
+      "value": 40
+    },
+    {
+      "id": 10,
+      "item": "Isleworks Baked Pumpkin",
+      "material1": {
+        "id": 45,
+        "qty": 1,
+        "item": "Island Pumpkin"
+      },
+      "material2": {
+        "id": 12,
+        "qty": 3,
+        "item": "Island Sap"
+      },
+      "purposeCat": "Foodstuffs",
+      "materialCat": "",
+      "rank": 1,
+      "time": 4,
+      "value": 40
+    },
+    {
+      "id": 11,
+      "item": "Isleworks Tunic",
+      "material1": {
+        "id": 52,
+        "qty": 2,
+        "item": "Sanctuary Fleece"
+      },
+      "material2": {
+        "id": 11,
+        "qty": 4,
+        "item": "Island Vine"
+      },
+      "purposeCat": "Attire",
+      "materialCat": "Textiles",
+      "rank": 1,
+      "time": 6,
+      "value": 72
+    },
+    {
+      "id": 12,
+      "item": "Isleworks Culinary Knife",
+      "material1": {
+        "id": 53,
+        "qty": 1,
+        "item": "Sanctuary Claw"
+      },
+      "material2": {
+        "id": 10,
+        "qty": 3,
+        "item": "Island Palm Log"
+      },
+      "purposeCat": "Sundries",
+      "materialCat": "Creature Creations",
+      "rank": 1,
+      "time": 4,
+      "value": 44
+    },
+    {
+      "id": 13,
+      "item": "Isleworks Brush",
+      "material1": {
+        "id": 54,
+        "qty": 1,
+        "item": "Sanctuary Fur"
+      },
+      "material2": {
+        "id": 10,
+        "qty": 3,
+        "item": "Island Palm Log"
+      },
+      "purposeCat": "Sundries",
+      "materialCat": "Woodworks",
+      "rank": 1,
+      "time": 4,
+      "value": 44
+    },
+    {
+      "id": 14,
+      "item": "Isleworks Boiled Egg",
+      "material1": {
+        "id": 56,
+        "qty": 1,
+        "item": "Sanctuary Egg"
+      },
+      "material2": {
+        "id": 5,
+        "qty": 3,
+        "item": "Island Laver"
+      },
+      "purposeCat": "Foodstuffs",
+      "materialCat": "Creature Creations",
+      "rank": 1,
+      "time": 4,
+      "value": 44
+    },
+    {
+      "id": 15,
+      "item": "Isleworks Hora",
+      "material1": {
+        "id": 57,
+        "qty": 2,
+        "item": "Sanctuary Carapace"
+      },
+      "material2": {
+        "id": 3,
+        "qty": 4,
+        "item": "Island Stone"
+      },
+      "purposeCat": "Arms",
+      "materialCat": "Creature Creations",
+      "rank": 1,
+      "time": 6,
+      "value": 72
+    },
+    {
+      "id": 16,
+      "item": "Isleworks Earrings",
+      "material1": {
+        "id": 58,
+        "qty": 1,
+        "item": "Sanctuary Fang"
+      },
+      "material2": {
+        "id": 11,
+        "qty": 3,
+        "item": "Island Vine"
+      },
+      "purposeCat": "Accessories",
+      "materialCat": "Creature Creations",
+      "rank": 1,
+      "time": 4,
+      "value": 44
+    },
+    {
+      "id": 17,
+      "item": "Isleworks Butter",
+      "material1": {
+        "id": 60,
+        "qty": 1,
+        "item": "Sanctuary Milk"
+      },
+      "material2": {
+        "id": 15,
+        "qty": 3,
+        "item": "Island Rock Salt"
+      },
+      "purposeCat": "Ingredients",
+      "materialCat": "Creature Creations",
+      "rank": 1,
+      "time": 4,
+      "value": 44
+    },
+    {
+      "id": 18,
+      "item": "Isleworks Brick Counter",
+      "material1": {
+        "id": 19,
+        "qty": 2,
+        "item": "Island Clay"
+      },
+      "material2": {
+        "id": 14,
+        "qty": 2,
+        "item": "Island Limestone"
+      },
+      "purposeCat": "Furnishings",
+      "materialCat": "Unburied Treasures",
+      "rank": 5,
+      "time": 6,
+      "value": 48,
+      "material3": {
+        "id": 10,
+        "qty": 2,
+        "item": "Island Palm Log"
+      }
+    },
+    {
+      "id": 19,
+      "item": "Bronze Sheep",
+      "material1": {
+        "id": 20,
+        "qty": 3,
+        "item": "Island Tinsand"
+      },
+      "material2": {
+        "id": 13,
+        "qty": 3,
+        "item": "Island Copper Ore"
+      },
+      "purposeCat": "Furnishings",
+      "materialCat": "Metalworks",
+      "rank": 5,
+      "time": 8,
+      "value": 64,
+      "material3": {
+        "id": 9,
+        "qty": 2,
+        "item": "Island Log"
+      }
+    },
+    {
+      "id": 20,
+      "item": "Isleworks Growth Formula",
+      "material1": {
+        "id": 27,
+        "qty": 2,
+        "item": "Island Alyssum"
+      },
+      "material2": {
+        "id": 7,
+        "qty": 3,
+        "item": "Islewort"
+      },
+      "purposeCat": "Concoctions",
+      "materialCat": "",
+      "rank": 5,
+      "time": 8,
+      "value": 136,
+      "material3": {
+        "id": 2,
+        "qty": 3,
+        "item": "Island Branch"
+      }
+    },
+    {
+      "id": 21,
+      "item": "Isleworks Garnet Rapier",
+      "material1": {
+        "id": 28,
+        "qty": 2,
+        "item": "Raw Island Garnet"
+      },
+      "material2": {
+        "id": 13,
+        "qty": 3,
+        "item": "Island Copper Ore"
+      },
+      "purposeCat": "Arms",
+      "materialCat": "Unburied Treasures",
+      "rank": 5,
+      "time": 8,
+      "value": 136,
+      "material3": {
+        "id": 20,
+        "qty": 3,
+        "item": "Island Tinsand"
+      }
+    },
+    {
+      "id": 22,
+      "item": "Isleworks Spruce Round Shield",
+      "material1": {
+        "id": 29,
+        "qty": 2,
+        "item": "Island Spruce Log"
+      },
+      "material2": {
+        "id": 13,
+        "qty": 3,
+        "item": "Island Copper Ore"
+      },
+      "purposeCat": "Attire",
+      "materialCat": "Woodworks",
+      "rank": 5,
+      "time": 8,
+      "value": 136,
+      "material3": {
+        "id": 3,
+        "qty": 3,
+        "item": "Island Stone"
+      }
+    },
+    {
+      "id": 23,
+      "item": "Isleworks Shark Oil",
+      "material1": {
+        "id": 30,
+        "qty": 2,
+        "item": "Island Hammerhead"
+      },
+      "material2": {
+        "id": 5,
+        "qty": 3,
+        "item": "Island Laver"
+      },
+      "purposeCat": "Sundries",
+      "materialCat": "Marine Merchandise",
+      "rank": 5,
+      "time": 8,
+      "value": 136,
+      "material3": {
+        "id": 12,
+        "qty": 3,
+        "item": "Island Sap"
+      }
+    },
+    {
+      "id": 24,
+      "item": "Isleworks Silver Ear Cuffs",
+      "material1": {
+        "id": 31,
+        "qty": 2,
+        "item": "Island Silver Ore"
+      },
+      "material2": {
+        "id": 20,
+        "qty": 3,
+        "item": "Island Tinsand"
+      },
+      "purposeCat": "Accessories",
+      "materialCat": "Metalworks",
+      "rank": 5,
+      "time": 8,
+      "value": 136,
+      "material3": {
+        "id": 6,
+        "qty": 3,
+        "item": "Island Coral"
+      }
+    },
+    {
+      "id": 25,
+      "item": "Isleworks Sweet Popoto",
+      "material1": {
+        "id": 42,
+        "qty": 2,
+        "item": "Island Popoto"
+      },
+      "material2": {
+        "id": 60,
+        "qty": 1,
+        "item": "Sanctuary Milk"
+      },
+      "purposeCat": "Confections",
+      "materialCat": "",
+      "rank": 5,
+      "time": 6,
+      "value": 72,
+      "material3": {
+        "id": 12,
+        "qty": 3,
+        "item": "Island Sap"
+      }
+    },
+    {
+      "id": 26,
+      "item": "Isleworks Parsnip Salad",
+      "material1": {
+        "id": 50,
+        "qty": 2,
+        "item": "Island Parsnip"
+      },
+      "material2": {
+        "id": 7,
+        "qty": 1,
+        "item": "Islewort"
+      },
+      "purposeCat": "Foodstuffs",
+      "materialCat": "",
+      "rank": 5,
+      "time": 4,
+      "value": 48,
+      "material3": {
+        "id": 12,
+        "qty": 1,
+        "item": "Island Sap"
+      }
+    },
+    {
+      "id": 27,
+      "item": "Isleworks Caramels",
+      "material1": {
+        "id": 16,
+        "qty": 4,
+        "item": "Island Sugarcane"
+      },
+      "material2": {
+        "id": 60,
+        "qty": 2,
+        "item": "Sanctuary Milk"
+      },
+      "purposeCat": "Confections",
+      "materialCat": "",
+      "rank": 6,
+      "time": 6,
+      "value": 81
+    },
+    {
+      "id": 28,
+      "item": "Isleworks Ribbon",
+      "material1": {
+        "id": 17,
+        "qty": 2,
+        "item": "Island Cotton Boll"
+      },
+      "material2": {
+        "id": 13,
+        "qty": 2,
+        "item": "Island Copper Ore"
+      },
+      "purposeCat": "Accessories",
+      "materialCat": "Textiles",
+      "rank": 6,
+      "time": 6,
+      "value": 54,
+      "material3": {
+        "id": 11,
+        "qty": 2,
+        "item": "Island Vine"
+      }
+    },
+    {
+      "id": 29,
+      "item": "Isleworks Rope",
+      "material1": {
+        "id": 18,
+        "qty": 2,
+        "item": "Island Hemp"
+      },
+      "material2": {
+        "id": 7,
+        "qty": 1,
+        "item": "Islewort"
+      },
+      "purposeCat": "Sundries",
+      "materialCat": "Textiles",
+      "rank": 6,
+      "time": 4,
+      "value": 36,
+      "material3": {
+        "id": 11,
+        "qty": 1,
+        "item": "Island Vine"
+      }
+    },
+    {
+      "id": 30,
+      "item": "Isleworks Cavalier's Hat",
+      "material1": {
+        "id": 55,
+        "qty": 2,
+        "item": "Sanctuary Feather"
+      },
+      "material2": {
+        "id": 17,
+        "qty": 2,
+        "item": "Island Cotton Boll"
+      },
+      "purposeCat": "Attire",
+      "materialCat": "Textiles",
+      "rank": 6,
+      "time": 6,
+      "value": 81,
+      "material3": {
+        "id": 18,
+        "qty": 2,
+        "item": "Island Hemp"
+      }
+    },
+    {
+      "id": 31,
+      "item": "Isleworks Horn",
+      "material1": {
+        "id": 59,
+        "qty": 2,
+        "item": "Sanctuary Horn"
+      },
+      "material2": {
+        "id": 19,
+        "qty": 2,
+        "item": "Island Clay"
+      },
+      "purposeCat": "Sundries",
+      "materialCat": "Creature Creations",
+      "rank": 6,
+      "time": 6,
+      "value": 81,
+      "material3": {
+        "id": 18,
+        "qty": 2,
+        "item": "Island Hemp"
+      }
+    },
+    {
+      "id": 32,
+      "item": "Isleworks Salt Cod",
+      "material1": {
+        "id": 24,
+        "qty": 4,
+        "item": "Islefish"
+      },
+      "material2": {
+        "id": 15,
+        "qty": 2,
+        "item": "Island Rock Salt"
+      },
+      "purposeCat": "Preserved Food",
+      "materialCat": "Marine Merchandise",
+      "rank": 7,
+      "time": 6,
+      "value": 54
+    },
+    {
+      "id": 33,
+      "item": "Isleworks Squid Ink",
+      "material1": {
+        "id": 25,
+        "qty": 2,
+        "item": "Island Squid"
+      },
+      "material2": {
+        "id": 15,
+        "qty": 2,
+        "item": "Island Rock Salt"
+      },
+      "purposeCat": "Ingredients",
+      "materialCat": "Marine Merchandise",
+      "rank": 7,
+      "time": 4,
+      "value": 36
+    },
+    {
+      "id": 34,
+      "item": "Isleworks Essential Draught",
+      "material1": {
+        "id": 26,
+        "qty": 2,
+        "item": "Island Jellyfish"
+      },
+      "material2": {
+        "id": 0,
+        "qty": 2,
+        "item": "Island Palm Leaf"
+      },
+      "purposeCat": "Concoctions",
+      "materialCat": "Marine Merchandise",
+      "rank": 7,
+      "time": 6,
+      "value": 54,
+      "material3": {
+        "id": 5,
+        "qty": 2,
+        "item": "Island Laver"
+      }
+    },
+    {
+      "id": 35,
+      "item": "Isleberry Jam",
+      "material1": {
+        "id": 44,
+        "qty": 3,
+        "item": "Isleberry"
+      },
+      "material2": {
+        "id": 16,
+        "qty": 2,
+        "item": "Island Sugarcane"
+      },
+      "purposeCat": "Ingredients",
+      "materialCat": "",
+      "rank": 7,
+      "time": 6,
+      "value": 78,
+      "material3": {
+        "id": 12,
+        "qty": 1,
+        "item": "Island Sap"
+      }
+    },
+    {
+      "id": 36,
+      "item": "Isleworks Tomato Relish",
+      "material1": {
+        "id": 47,
+        "qty": 2,
+        "item": "Island Tomato"
+      },
+      "material2": {
+        "id": 16,
+        "qty": 1,
+        "item": "Island Sugarcane"
+      },
+      "purposeCat": "Ingredients",
+      "materialCat": "",
+      "rank": 7,
+      "time": 4,
+      "value": 52,
+      "material3": {
+        "id": 7,
+        "qty": 1,
+        "item": "Islewort"
+      }
+    },
+    {
+      "id": 37,
+      "item": "Isleworks Onion Soup",
+      "material1": {
+        "id": 46,
+        "qty": 3,
+        "item": "Island Onion"
+      },
+      "material2": {
+        "id": 15,
+        "qty": 2,
+        "item": "Island Rock Salt"
+      },
+      "purposeCat": "Foodstuffs",
+      "materialCat": "",
+      "rank": 7,
+      "time": 6,
+      "value": 78,
+      "material3": {
+        "id": 7,
+        "qty": 1,
+        "item": "Islewort"
+      }
+    },
+    {
+      "id": 38,
+      "item": "Islefish Pie",
+      "material1": {
+        "id": 48,
+        "qty": 3,
+        "item": "Island Wheat"
+      },
+      "material2": {
+        "id": 24,
+        "qty": 2,
+        "item": "Islefish"
+      },
+      "purposeCat": "Confections",
+      "materialCat": "Marine Merchandise",
+      "rank": 7,
+      "time": 6,
+      "value": 78,
+      "material3": {
+        "id": 16,
+        "qty": 1,
+        "item": "Island Sugarcane"
+      }
+    },
+    {
+      "id": 39,
+      "item": "Isleworks Corn Flakes",
+      "material1": {
+        "id": 49,
+        "qty": 2,
+        "item": "Island Corn"
+      },
+      "material2": {
+        "id": 16,
+        "qty": 2,
+        "item": "Island Sugarcane"
+      },
+      "purposeCat": "Preserved Food",
+      "materialCat": "",
+      "rank": 7,
+      "time": 4,
+      "value": 52
+    },
+    {
+      "id": 40,
+      "item": "Isleworks Pickled Radish",
+      "material1": {
+        "id": 51,
+        "qty": 4,
+        "item": "Island Radish"
+      },
+      "material2": {
+        "id": 1,
+        "qty": 2,
+        "item": "Island Apple"
+      },
+      "purposeCat": "Preserved Food",
+      "materialCat": "",
+      "rank": 7,
+      "time": 8,
+      "value": 104,
+      "material3": {
+        "id": 16,
+        "qty": 2,
+        "item": "Island Sugarcane"
+      }
+    },
+    {
+      "id": 41,
+      "item": "Isleworks Iron Axe",
+      "material1": {
+        "id": 21,
+        "qty": 3,
+        "item": "Island Iron Ore"
+      },
+      "material2": {
+        "id": 9,
+        "qty": 3,
+        "item": "Island Log"
+      },
+      "purposeCat": "Arms",
+      "materialCat": "Metalworks",
+      "rank": 8,
+      "time": 8,
+      "value": 72,
+      "material3": {
+        "id": 8,
+        "qty": 2,
+        "item": "Island Sand"
+      }
+    },
+    {
+      "id": 42,
+      "item": "Isleworks Quartz Ring",
+      "material1": {
+        "id": 22,
+        "qty": 3,
+        "item": "Island Quartz"
+      },
+      "material2": {
+        "id": 21,
+        "qty": 3,
+        "item": "Island Iron Ore"
+      },
+      "purposeCat": "Accessories",
+      "materialCat": "Unburied Treasures",
+      "rank": 8,
+      "time": 8,
+      "value": 72,
+      "material3": {
+        "id": 3,
+        "qty": 2,
+        "item": "Island Stone"
+      }
+    },
+    {
+      "id": 43,
+      "item": "Isleworks Porcelain Vase",
+      "material1": {
+        "id": 23,
+        "qty": 3,
+        "item": "Island Leucogranite"
+      },
+      "material2": {
+        "id": 22,
+        "qty": 3,
+        "item": "Island Quartz"
+      },
+      "purposeCat": "Sundries",
+      "materialCat": "Unburied Treasures",
+      "rank": 8,
+      "time": 8,
+      "value": 72,
+      "material3": {
+        "id": 19,
+        "qty": 2,
+        "item": "Island Clay"
+      }
+    },
+    {
+      "id": 44,
+      "item": "Isleworks Vegetable Juice",
+      "material1": {
+        "id": 43,
+        "qty": 3,
+        "item": "Island Cabbage"
+      },
+      "material2": {
+        "id": 7,
+        "qty": 2,
+        "item": "Islewort"
+      },
+      "purposeCat": "Concoctions",
+      "materialCat": "",
+      "rank": 8,
+      "time": 6,
+      "value": 78,
+      "material3": {
+        "id": 5,
+        "qty": 1,
+        "item": "Island Laver"
+      }
+    },
+    {
+      "id": 45,
+      "item": "Isleworks Pumpkin Pudding",
+      "material1": {
+        "id": 45,
+        "qty": 3,
+        "item": "Island Pumpkin"
+      },
+      "material2": {
+        "id": 56,
+        "qty": 1,
+        "item": "Sanctuary Egg"
+      },
+      "purposeCat": "Confections",
+      "materialCat": "",
+      "rank": 8,
+      "time": 6,
+      "value": 78,
+      "material3": {
+        "id": 60,
+        "qty": 1,
+        "item": "Sanctuary Milk"
+      }
+    },
+    {
+      "id": 46,
+      "item": "Isleworks Sheepfluff Rug",
+      "material1": {
+        "id": 52,
+        "qty": 3,
+        "item": "Sanctuary Fleece"
+      },
+      "material2": {
+        "id": 17,
+        "qty": 2,
+        "item": "Island Cotton Boll"
+      },
+      "purposeCat": "Furnishings",
+      "materialCat": "Creature Creations",
+      "rank": 8,
+      "time": 6,
+      "value": 90,
+      "material3": {
+        "id": 18,
+        "qty": 1,
+        "item": "Island Hemp"
+      }
+    },
+    {
+      "id": 47,
+      "item": "Isleworks Garden Scythe",
+      "material1": {
+        "id": 53,
+        "qty": 3,
+        "item": "Sanctuary Claw"
+      },
+      "material2": {
+        "id": 21,
+        "qty": 2,
+        "item": "Island Iron Ore"
+      },
+      "purposeCat": "Sundries",
+      "materialCat": "Metalworks",
+      "rank": 9,
+      "time": 6,
+      "value": 90,
+      "material3": {
+        "id": 10,
+        "qty": 1,
+        "item": "Island Palm Log"
+      }
+    },
+    {
+      "id": 48,
+      "item": "Isleworks Bed",
+      "material1": {
+        "id": 54,
+        "qty": 4,
+        "item": "Sanctuary Fur"
+      },
+      "material2": {
+        "id": 17,
+        "qty": 2,
+        "item": "Island Cotton Boll"
+      },
+      "purposeCat": "Furnishings",
+      "materialCat": "Textiles",
+      "rank": 9,
+      "time": 8,
+      "value": 120,
+      "material3": {
+        "id": 9,
+        "qty": 2,
+        "item": "Island Log"
+      }
+    },
+    {
+      "id": 49,
+      "item": "Isleworks Scale Fingers",
+      "material1": {
+        "id": 57,
+        "qty": 4,
+        "item": "Sanctuary Carapace"
+      },
+      "material2": {
+        "id": 21,
+        "qty": 2,
+        "item": "Island Iron Ore"
+      },
+      "purposeCat": "Attire",
+      "materialCat": "Creature Creations",
+      "rank": 9,
+      "time": 8,
+      "value": 120,
+      "material3": {
+        "id": 17,
+        "qty": 2,
+        "item": "Island Cotton Boll"
+      }
+    },
+    {
+      "id": 50,
+      "item": "Isleworks Crook",
+      "material1": {
+        "id": 58,
+        "qty": 4,
+        "item": "Sanctuary Fang"
+      },
+      "material2": {
+        "id": 22,
+        "qty": 2,
+        "item": "Island Quartz"
+      },
+      "purposeCat": "Arms",
+      "materialCat": "Woodworks",
+      "rank": 9,
+      "time": 8,
+      "value": 120,
+      "material3": {
+        "id": 9,
+        "qty": 2,
+        "item": "Island Log"
+      }
+    }
+  ],
+  "itemPouch": [
+    {
+      "id": 0,
+      "item": "Island Palm Leaf",
+      "type": 1
+    },
+    {
+      "id": 1,
+      "item": "Island Apple",
+      "type": 1
+    },
+    {
+      "id": 2,
+      "item": "Island Branch",
+      "type": 1
+    },
+    {
+      "id": 3,
+      "item": "Island Stone",
+      "type": 1
+    },
+    {
+      "id": 4,
+      "item": "Island Clam",
+      "type": 1
+    },
+    {
+      "id": 5,
+      "item": "Island Laver",
+      "type": 1
+    },
+    {
+      "id": 6,
+      "item": "Island Coral",
+      "type": 1
+    },
+    {
+      "id": 7,
+      "item": "Islewort",
+      "type": 1
+    },
+    {
+      "id": 8,
+      "item": "Island Sand",
+      "type": 1
+    },
+    {
+      "id": 9,
+      "item": "Island Log",
+      "type": 1
+    },
+    {
+      "id": 10,
+      "item": "Island Palm Log",
+      "type": 1
+    },
+    {
+      "id": 11,
+      "item": "Island Vine",
+      "type": 1
+    },
+    {
+      "id": 12,
+      "item": "Island Sap",
+      "type": 1
+    },
+    {
+      "id": 13,
+      "item": "Island Copper Ore",
+      "type": 1
+    },
+    {
+      "id": 14,
+      "item": "Island Limestone",
+      "type": 1
+    },
+    {
+      "id": 15,
+      "item": "Island Rock Salt",
+      "type": 1
+    },
+    {
+      "id": 16,
+      "item": "Island Sugarcane",
+      "type": 1
+    },
+    {
+      "id": 17,
+      "item": "Island Cotton Boll",
+      "type": 1
+    },
+    {
+      "id": 18,
+      "item": "Island Hemp",
+      "type": 1
+    },
+    {
+      "id": 19,
+      "item": "Island Clay",
+      "type": 1
+    },
+    {
+      "id": 20,
+      "item": "Island Tinsand",
+      "type": 1
+    },
+    {
+      "id": 21,
+      "item": "Island Iron Ore",
+      "type": 1
+    },
+    {
+      "id": 22,
+      "item": "Island Quartz",
+      "type": 1
+    },
+    {
+      "id": 23,
+      "item": "Island Leucogranite",
+      "type": 1
+    },
+    {
+      "id": 24,
+      "item": "Islefish",
+      "type": 1
+    },
+    {
+      "id": 25,
+      "item": "Island Squid",
+      "type": 1
+    },
+    {
+      "id": 26,
+      "item": "Island Jellyfish",
+      "type": 1
+    },
+    {
+      "id": 27,
+      "item": "Island Alyssum",
+      "type": 1
+    },
+    {
+      "id": 28,
+      "item": "Raw Island Garnet",
+      "type": 1
+    },
+    {
+      "id": 29,
+      "item": "Island Spruce Log",
+      "type": 1
+    },
+    {
+      "id": 30,
+      "item": "Island Hammerhead",
+      "type": 1
+    },
+    {
+      "id": 31,
+      "item": "Island Silver Ore",
+      "type": 1
+    },
+    {
+      "id": 32,
+      "item": "Island Popoto Set",
+      "type": 3
+    },
+    {
+      "id": 33,
+      "item": "Island Cabbage Seeds",
+      "type": 3
+    },
+    {
+      "id": 34,
+      "item": "Isleberry Seeds",
+      "type": 3
+    },
+    {
+      "id": 35,
+      "item": "Island Pumpkin Seeds",
+      "type": 3
+    },
+    {
+      "id": 36,
+      "item": "Island Onion Set",
+      "type": 3
+    },
+    {
+      "id": 37,
+      "item": "Island Tomato Seeds",
+      "type": 3
+    },
+    {
+      "id": 38,
+      "item": "Island Wheat Seeds",
+      "type": 3
+    },
+    {
+      "id": 39,
+      "item": "Island Corn Seeds",
+      "type": 3
+    },
+    {
+      "id": 40,
+      "item": "Island Parsnip Seeds",
+      "type": 3
+    },
+    {
+      "id": 41,
+      "item": "Island Radish Seeds",
+      "type": 3
+    },
+    {
+      "id": 42,
+      "item": "Island Popoto",
+      "type": 4
+    },
+    {
+      "id": 43,
+      "item": "Island Cabbage",
+      "type": 4
+    },
+    {
+      "id": 44,
+      "item": "Isleberry",
+      "type": 4
+    },
+    {
+      "id": 45,
+      "item": "Island Pumpkin",
+      "type": 4
+    },
+    {
+      "id": 46,
+      "item": "Island Onion",
+      "type": 4
+    },
+    {
+      "id": 47,
+      "item": "Island Tomato",
+      "type": 4
+    },
+    {
+      "id": 48,
+      "item": "Island Wheat",
+      "type": 4
+    },
+    {
+      "id": 49,
+      "item": "Island Corn",
+      "type": 4
+    },
+    {
+      "id": 50,
+      "item": "Island Parsnip",
+      "type": 4
+    },
+    {
+      "id": 51,
+      "item": "Island Radish",
+      "type": 4
+    },
+    {
+      "id": 52,
+      "item": "Sanctuary Fleece",
+      "type": 5
+    },
+    {
+      "id": 53,
+      "item": "Sanctuary Claw",
+      "type": 5
+    },
+    {
+      "id": 54,
+      "item": "Sanctuary Fur",
+      "type": 5
+    },
+    {
+      "id": 55,
+      "item": "Sanctuary Feather",
+      "type": 5
+    },
+    {
+      "id": 56,
+      "item": "Sanctuary Egg",
+      "type": 5
+    },
+    {
+      "id": 57,
+      "item": "Sanctuary Carapace",
+      "type": 5
+    },
+    {
+      "id": 58,
+      "item": "Sanctuary Fang",
+      "type": 5
+    },
+    {
+      "id": 59,
+      "item": "Sanctuary Horn",
+      "type": 5
+    },
+    {
+      "id": 60,
+      "item": "Sanctuary Milk",
+      "type": 5
+    },
+    {
+      "id": 61,
+      "item": "Island Sweetfeed",
+      "type": 6
+    },
+    {
+      "id": 62,
+      "item": "Island Greenfeed",
+      "type": 6
+    },
+    {
+      "id": 63,
+      "item": "Premium Island Greenfeed",
+      "type": 6
+    },
+    {
+      "id": 64,
+      "item": "Makeshift Net",
+      "type": 7
+    },
+    {
+      "id": 65,
+      "item": "Makeshift Restraint",
+      "type": 7
+    },
+    {
+      "id": 66,
+      "item": "Makeshift Soporific",
+      "type": 7
+    }
+  ]
+}

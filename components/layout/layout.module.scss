@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.toast {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.footer {
+  border-top: 1px solid $gray-500;
+  font-size: small;
+  margin: 16px;
+  padding: 16px;
+
+  display: flex;
+  justify-content: space-between;
+}

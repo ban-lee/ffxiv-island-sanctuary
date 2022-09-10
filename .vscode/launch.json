@@ -1,0 +1,28 @@
+{
+  "configurations": [
+    {
+      "name": "island sanctuary debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn dev"
+    },
+    {
+      "name": "island sanctuary debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "island sanctuary debug full stack",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "internalConsoleOptions": "openOnSessionStart",
+      "serverReadyAction": {
+        "pattern": "started server on .+, url: (https?://.+)",
+        "uriFormat": "%s",
+        "action": "debugWithChrome"
+      }
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.hours {
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.digits {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.add-btns {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 8px 0;
+}
+
+.scheduled {
+  padding: 8px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 16px;
+  height: 675px;
+}
+
+.timeslot {
+  background-color: tint-color($yellow, 90%);
+  border: 1px solid $yellow-300;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.timeslot-header {
+  align-items: center;
+  display: flex;
+
+  .timeslot-title {
+    flex: 1 1;
+    padding-left: 4px;
+  }
+
+  .bonus {
+    flex: 0 0 auto;
+    height: 28px;
+    width: 32px;
+
+    > div {
+      background-color: $teal;
+      border-radius: 18px;
+      color: $white;
+      line-height: 28px;
+      text-align: center;
+      width: 28px;
+    }
+  }
+}
+
+.timeslot-categories {
+  display: flex;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.remove-btn {
+  background-color: transparent !important;
+  color: $red-500;
+
+  &:hover {
+    background-color: transparent !important;
+    color: $red-700 !important;
+  }
+}
+
+.table-sticky {
+  position: sticky;
+  padding: 16px 0 8px 0;
+}
+
+.select-filters {
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+
+  > div {
+    margin-bottom: 0 !important;
+  }
+}
+
+.select-table {
+  overflow: overlay;
+  height: 600px;
+
+  table {
+    font-size: 14px;
+    margin-bottom: 0;
+    table-layout: fixed;
+
+    tr {
+      cursor: default;
+    }
+
+    td {
+      vertical-align: middle;
+    }
+  }
+
+  .col-product {
+    width: 65%;
+  }
+  .col-time {
+    width: 10%;
+  }
+  .col-value {
+    width: 10%;
+  }
+  .col-trend {
+    width: 15%;
+  }
+  .col-shift {
+    width: 20%;
+  }
+}
+
+.modifier, .demand-shift {
+  display: flex;
+  gap: 8px;
+}
+
+.modifier {
+  .icon-container {
+    font-size: 18px;
+    line-height: 21px;
+    height: 22px;
+    width: 22px;
+  }
+}
+
+.demand-shift {
+  .icon-container {
+    font-size: 18px;
+    line-height: 21px;
+    height: 22px;
+    width: 22px;
+  }
+
+  .red {
+    background-color: $red !important;
+  }
+
+  .red-light {
+    background-color: $red-400 !important;
+  }
+
+  .teal {
+    background-color: $teal !important;
+  }
+
+  .teal-light {
+    background-color: $teal-400 !important;
+  }
+
+  .white {
+    background-color: $gray-500 !important;
+  }
+}
