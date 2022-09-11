@@ -1,4 +1,3 @@
-import Chip from 'components/chip/chip';
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import styles from './layout.module.scss';
@@ -85,18 +84,6 @@ export default function Layout({ children, layoutProps }: { children: React.Reac
             Created using data from Nekkowe&apos;s <a href={ISLAND_SANCTUARY_SHEET_URL}>
               Island Sanctuary Workshop Sheet</a>!
           </div>
-        </div>
-        <div className="d-flex gap-5">
-          <Chip option={{value: "", text: "dark-blue", color: "dark-blue"}}></Chip>
-          <Chip option={{value: "", text: "light-blue", color: "light-blue"}}></Chip>
-          <Chip option={{value: "", text: "teal", color: "teal"}}></Chip>
-          <Chip option={{value: "", text: "green", color: "green"}}></Chip>
-          <Chip option={{value: "", text: "yellow", color: "yellow"}}></Chip>
-          <Chip option={{value: "", text: "orange", color: "orange"}}></Chip>
-          <Chip option={{value: "", text: "red", color: "red"}}></Chip>
-          <Chip option={{value: "", text: "pink", color: "pink"}}></Chip>
-          <Chip option={{value: "", text: "purple", color: "purple"}}></Chip>
-          <Chip option={{value: "", text: "gray", color: "gray"}}></Chip>
         </div>
       </footer>
     </>
