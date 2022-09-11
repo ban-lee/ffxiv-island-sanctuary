@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  swcMinify: true,
-  output: 'standalone',
+  basePath: '/ban-lee',
 }
 
 module.exports = nextConfig

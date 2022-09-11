@@ -13,7 +13,6 @@
 
 ## NEXTJS THINGS
 /.next/
-/out/
 
 # vercel
 .vercel
