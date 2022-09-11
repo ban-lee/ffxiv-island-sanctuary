@@ -16,6 +16,11 @@
   margin: 16px;
   padding: 16px;
 
+  align-items: center;
   display: flex;
   justify-content: space-between;
+}
+
+.credit {
+  text-align: right;
 }

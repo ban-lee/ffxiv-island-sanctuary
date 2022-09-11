@@ -1,4 +1,5 @@
 import Chip from 'components/chip/chip';
+import ScheduleHours from './schedule-hours';
 import SelectProductTable from './select-product-table';
 import styles from './workshop.module.scss';
 import { getId } from 'utils/id-utils';
@@ -7,6 +8,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import {
   Button,
+  CloseButton,
   Modal,
   ModalBody,
   ModalHeader,
@@ -21,6 +23,13 @@ enum InsertMode {
 interface WorkshopProps {
   storageKeyPrefix: string;
   trendData: Map<string, IsItemTrend>;
+}
+
+function calculateBonus(currentProduct: IsProductWithKey, previousProduct?: IsProductWithKey) {
+  if (!previousProduct) return false;
+
+  return previousProduct.purposeCat === currentProduct.purposeCat ||
+      previousProduct.materialCat === currentProduct.materialCat;
 }
 
 export default function Workshop({storageKeyPrefix, trendData}: WorkshopProps): JSX.Element {
@@ -84,12 +93,7 @@ export default function Workshop({storageKeyPrefix, trendData}: WorkshopProps): 
 
   return (
     <div>
-      <div className={`${styles['hours']} row`}>
-        <div className="col-6 text-center">Used</div> <div className="col-6 text-center">Available</div>
-      </div>
-      <div className={`${styles['hours']} ${styles['digits']} row`}>
-        <div className="col-6 text-center">{usedHours}</div> <div className="col-6 text-center">{availableHours}</div>
-      </div>
+      <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
       <div className={styles['add-btns']}>
         <div>
           <Button color="primary"
@@ -116,16 +120,7 @@ export default function Workshop({storageKeyPrefix, trendData}: WorkshopProps): 
       </div>
       <div className={styles.scheduled}>
         {selectedProducts.map((product, index) => {
-          let hasBonus = false;
-
-          if (index - 1 >= 0) {
-            const previousProduct = selectedProducts[index - 1];
-            if (previousProduct.purposeCat === product.purposeCat ||
-                  previousProduct.materialCat === product.materialCat) {
-              hasBonus = true;
-            }
-          }
-
+          const hasBonus = calculateBonus(product, selectedProducts[index - 1]);
           const height = 100/(24/product.time);
 
           return (
@@ -133,23 +128,24 @@ export default function Workshop({storageKeyPrefix, trendData}: WorkshopProps): 
                 className={styles['timeslot']}
                 style={{'height': `${height}%` }}>
               <div className={styles['timeslot-header']}>
-                <div className={styles['bonus']}>
+                <div className={styles['timeslot-icon']}>
                   {hasBonus &&
-                    <div id={product.key}>
+                    <div id={product.key} className={styles['bonus']}>
                       <i className="bi bi-stars"></i>
                       <UncontrolledTooltip target={product.key}>
                         Efficiency Bonus!
                       </UncontrolledTooltip>
                     </div>}
+                  {!hasBonus &&
+                    <div id={product.key} className={styles['no-bonus']}>
+                      <i className="bi bi-dash-lg"></i>
+                    </div>}
                 </div>
                 <div className={styles['timeslot-title']}>
-                  <span>{product.item}</span> ({product.time}h)
+                  <span>{product.item}</span> ({product.time})
                 </div>
-                <div>
-                  <Button className={`btn-icon--med ${styles['remove-btn']}`}
-                      onClick={() => onRemoveProduct(index)}>
-                    <i className="bi bi-x-circle-fill"></i>
-                  </Button>
+                <div className={styles['timeslot-remove']}>
+                  <CloseButton onClick={() => onRemoveProduct(index)}></CloseButton>
                 </div>
               </div>
               <div className={styles['timeslot-categories']}>
@@ -170,14 +166,7 @@ export default function Workshop({storageKeyPrefix, trendData}: WorkshopProps): 
           Select Product
         </ModalHeader>
         <div className={`${styles['table-sticky']}`}>
-          <div className={`${styles['hours']} row`}>
-            <div className="col-6 text-center">Used</div>
-            <div className="col-6 text-center">Available</div>
-          </div>
-          <div className={`${styles['hours']} ${styles['digits']} row`}>
-            <div className="col-6 text-center">{usedHours}</div>
-            <div className="col-6 text-center">{availableHours}</div>
-          </div>
+          <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
         </div>
         <ModalBody>
           <SelectProductTable

@@ -2,8 +2,9 @@ import Header from 'components/layout/header';
 import ImportTrend from 'components/trend/import-trend';
 import Layout from 'components/layout/layout';
 import styles from 'styles/ffxiv.module.scss';
+import TrendTable from 'components/trend/trend-table';
 import Workshop from 'components/workshop/workshop';
-import { Button, Table } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { IsItemTrend } from 'types';
 import { NextPage } from 'next';
 import { useLocalStorage } from 'hooks/useLocalStorage';
@@ -66,35 +67,7 @@ const IslandSanctuaryPage: NextPage = () => {
           </div>
         </div>}
         {view === View.TREND_DATA &&
-          <div className={`${styles['trend-data']}`}>
-            <h3>Trend Data</h3>
-            <Table size="sm">
-              <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Popularity</th>
-                  <th>Supply</th>
-                  <th>Demand Shift</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[...trendData.values()].map((trend) => {
-                  return (
-                    <tr key={trend.item}>
-                      <td>{trend.item}</td>
-                      <td>{trend.popularity}</td>
-                      <td>{trend.supply}</td>
-                      <td>{trend.demandShift}</td>
-                    </tr>);
-                })}
-                {trendData.size === 0 &&
-                  <div>
-                    <div className="spacer2"></div>
-                    No trend data found!
-                  </div>}
-              </tbody>
-            </Table>
-          </div>
+          <TrendTable trendData={trendData}></TrendTable>
         }
       </div>
     </main>

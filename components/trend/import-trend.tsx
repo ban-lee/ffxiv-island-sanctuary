@@ -15,6 +15,9 @@ interface ImportTrendProps {
   setTrendData: SetState<Map<string, IsItemTrend>>;
 }
 
+const EXAMPLE_SHEET_URL =
+    'https://docs.google.com/spreadsheets/d/1af0E8NkUIRMLf6dIY8pnMyUdjC9H5CQiAmH9Jaa4R6U/edit?usp=sharing';
+
 export default function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -64,21 +67,17 @@ export default function ImportTrend({setTrendData}: ImportTrendProps): JSX.Eleme
           centered>
         <ModalHeader
             toggle={showTrendImport}>
-          Trend Data
+          Import Trends
         </ModalHeader>
         <ModalBody>
           <div>
-            Import tab-separated value column order:
-            <ul>
-              <li>Product Name</li>
-              <li>Popularity</li>
-              <li>Supply</li>
-              <li>Demand Shift (optional)</li>
-            </ul>
+            Import tab-separated values for the popularity, supply and demand shift of each product. <br />
+            <a href={EXAMPLE_SHEET_URL} target="_blank" rel="noopener noreferrer">Example Sheet</a>
+            <div className="spacer2"></div>
           </div>
           <Input id="trend-data"
               type="textarea"
-              style={{'minHeight': '200px'}}
+              style={{'minHeight': '300px'}}
               onChange={onChangeTrendData}></Input>
         </ModalBody>
       </Modal>

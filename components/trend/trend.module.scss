@@ -1,0 +1,17 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.trend-data {
+  margin: 0 16px;
+  padding: 0 8px;
+
+  h3 {
+    text-align: center;
+    padding: 4px 8px 8px 8px;
+    border-bottom: 1px solid $blue-400;
+  }
+
+  table {
+    margin-bottom: 0;
+  }
+}

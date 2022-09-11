@@ -33,26 +33,38 @@
 }
 
 .timeslot-header {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
 
   .timeslot-title {
     flex: 1 1;
     padding-left: 4px;
+    padding-top: 1px;
+
+    > span {
+      font-weight: bold;
+    }
   }
 
-  .bonus {
+  .timeslot-icon {
     flex: 0 0 auto;
     height: 28px;
     width: 32px;
 
     > div {
-      background-color: $teal;
       border-radius: 18px;
       color: $white;
       line-height: 28px;
       text-align: center;
       width: 28px;
+    }
+
+    .bonus {
+      background-color: $teal;
+    }
+
+    .no-bonus {
+      background-color: $gray-500;
     }
   }
 }
@@ -61,6 +73,10 @@
   display: flex;
   gap: 8px;
   padding-top: 8px;
+}
+
+.timeslot-remove {
+  padding: 0 2px;
 }
 
 .remove-btn {
