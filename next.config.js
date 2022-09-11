@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false,
-  basePath: '/ban-lee',
+  basePath: '/ffxiv-island-sanctuary',
 }
 
 module.exports = nextConfig
