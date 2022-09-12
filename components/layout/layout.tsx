@@ -81,8 +81,8 @@ export default function Layout({ children, layoutProps }: { children: React.Reac
             2022 © <a href={GITHUB_URL}>Ban Lee</a>
           </div>
           <div className={styles['credit']}>
-            Built with permission to use the data from <br />
-            Nekkowe&apos;s
+            Built with Nekkowe&apos;s permission to use the data <br />
+            from their&nbsp;
             <a href={ISLAND_SANCTUARY_SHEET_URL} target="_blank" rel="noreferrer">
               Island Sanctuary Workshop Sheet
             </a>!
