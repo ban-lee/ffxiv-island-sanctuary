@@ -82,7 +82,10 @@ export default function Layout({ children, layoutProps }: { children: React.Reac
           </div>
           <div className={styles['credit']}>
             Built with permission to use the data from <br />
-            Nekkowe&apos;s <a href={ISLAND_SANCTUARY_SHEET_URL}>Island Sanctuary Workshop Sheet</a>!
+            Nekkowe&apos;s
+            <a href={ISLAND_SANCTUARY_SHEET_URL} target="_blank" rel="noreferrer">
+              Island Sanctuary Workshop Sheet
+            </a>!
           </div>
         </div>
       </footer>

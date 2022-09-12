@@ -72,7 +72,7 @@ export default function ImportTrend({setTrendData}: ImportTrendProps): JSX.Eleme
         <ModalBody>
           <div>
             Import tab-separated values for the popularity, supply and demand shift of each product. <br />
-            <a href={EXAMPLE_SHEET_URL} target="_blank" rel="noopener noreferrer">Example Sheet</a>
+            <a href={EXAMPLE_SHEET_URL} target="_blank" rel="noreferrer">Example Sheet</a>
             <div className="spacer2"></div>
           </div>
           <Input id="trend-data"

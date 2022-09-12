@@ -3,7 +3,7 @@ import ScheduleHours from './schedule-hours';
 import SelectProductTable from './select-product-table';
 import styles from './workshop.module.scss';
 import { getId } from 'utils/id-utils';
-import { IsItemTrend, IsProduct, IsProductWithKey } from 'types';
+import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import {
@@ -22,6 +22,7 @@ enum InsertMode {
 
 interface WorkshopProps {
   storageKeyPrefix: string;
+  sanctuaryInfo: SanctuaryInfo;
   trendData: Map<string, IsItemTrend>;
 }
 
@@ -32,7 +33,7 @@ function calculateBonus(currentProduct: IsProductWithKey, previousProduct?: IsPr
       previousProduct.materialCat === currentProduct.materialCat;
 }
 
-export default function Workshop({storageKeyPrefix, trendData}: WorkshopProps): JSX.Element {
+export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: WorkshopProps): JSX.Element {
   const [selectedProducts, setSelectedProducts] =
       useLocalStorage<IsProductWithKey[]>(`${storageKeyPrefix}is-selected-products`, []);
   const [availableHours, setAvailableHours] = useState(24);
@@ -170,6 +171,7 @@ export default function Workshop({storageKeyPrefix, trendData}: WorkshopProps): 
         </div>
         <ModalBody>
           <SelectProductTable
+              rank={sanctuaryInfo.rank}
               onSelectProduct={onSelectProduct}
               lastSelected={lastSelectedProduct}
               trendData={trendData}

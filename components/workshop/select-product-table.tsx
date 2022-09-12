@@ -6,6 +6,7 @@ import { Col, FormGroup, Input, Label, Table } from 'reactstrap';
 import { DemandShift, IsItemTrend, IsProduct } from 'types';
 
 interface SelectProductTableProps {
+  rank: number;
   lastSelected?: IsProduct;
   onSelectProduct: (product: IsProduct) => void;
   trendData: Map<string, IsItemTrend>;
@@ -19,6 +20,7 @@ function productFilter(
     lastSelected: IsProduct|undefined,
     availableHours: number,
     timeFilterValue: number,
+    rank: number,
   ): boolean {
   const matchSameProduct = current.id === lastSelected?.id;
   const matchProductCat =
@@ -27,8 +29,9 @@ function productFilter(
       (!!current.materialCat && current.materialCat === lastSelected.materialCat);
   const matchAvailableHours = availableHours >= current.time;
   const matchTimeFilter = timeFilterValue === 0 || current.time === timeFilterValue;
+  const isRankRequirementMet = rank >= current.rank;
 
-  return !matchSameProduct && matchProductCat && matchAvailableHours && matchTimeFilter;
+  return !matchSameProduct && matchProductCat && matchAvailableHours && matchTimeFilter && isRankRequirementMet;
 }
 
 function getTrend(trend? : IsItemTrend): JSX.Element {
@@ -107,6 +110,7 @@ function getDemandShift(trend? : IsItemTrend): JSX.Element {
 
 export default function SelectProductTable(
   {
+    rank,
     lastSelected,
     onSelectProduct,
     trendData,
@@ -117,7 +121,7 @@ export default function SelectProductTable(
 
   useEffect(() => {
     setDisplayProducts(
-      data.products.filter((product) => productFilter(product, lastSelected, availableHours, timeFilterValue)));
+      data.products.filter((product) => productFilter(product, lastSelected, availableHours, timeFilterValue, rank)));
   }, [lastSelected, availableHours, timeFilterValue]);
 
   function onTimeFilterChange(e: ChangeEvent) {

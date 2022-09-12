@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+.rank {
+  color: $light;
+  padding-right: 16px;
+}
+
+.main-menu {
+  display: flex;
+}
+
+.main-menu-button {
+  font-size: 20px;
+  padding: 4px 10px;
+}
+
+.dropdown-menu {
+  right: 0;
+  top: 44px;
+}

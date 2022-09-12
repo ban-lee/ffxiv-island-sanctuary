@@ -12,7 +12,10 @@ export default function Header({children, title, homeRoute}: HeaderProps) {
   return (
     <header className={styles['header']}>
       <Navbar color="dark" dark>
-        <NavbarBrand href={homeRoute || undefined} className="me-auto">
+        <div className={styles['header-icon']}>
+          <i className="icon bi-sun-fill"></i>
+        </div>
+        <NavbarBrand className="me-auto">
           {title} &nbsp;
         </NavbarBrand>
 

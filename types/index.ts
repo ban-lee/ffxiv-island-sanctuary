@@ -77,3 +77,7 @@ export interface IsItemPouch {
   item: string;
   type: number;
 }
+
+export interface SanctuaryInfo {
+  rank: number;
+}
