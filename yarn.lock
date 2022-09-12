@@ -1349,7 +1349,7 @@ __metadata:
     next: ^12.3.0
     react: ^18.2.0
     react-dom: ^18.2.0
-    reactstrap: ^9.1.4
+    reactstrap: 9.1.1
     sass: ^1.54.9
     typescript: ^4.8.3
     uuid: ^9.0.0
@@ -2687,9 +2687,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"reactstrap@npm:^9.1.4":
-  version: 9.1.4
-  resolution: "reactstrap@npm:9.1.4"
+"reactstrap@npm:9.1.1":
+  version: 9.1.1
+  resolution: "reactstrap@npm:9.1.1"
   dependencies:
     "@babel/runtime": ^7.12.5
     "@popperjs/core": ^2.6.0
@@ -2700,7 +2700,7 @@ __metadata:
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: b0a02aea8cdd0525a34f023fd1a558c821680cbca5ec6d82c958e7e8c77793369a02dd5fd32d99ec911ef56646daf8c3135177ce1c66b2d8971ae6fcdc503be7
+  checksum: d6272b2d49234d5bda3a820644af491ebf10aa9cb592a36ad0a41e55483791d42daaccbacd6e3e14ebff772c41a62e60f860430ecd5d97421cb21e605ad37536
   languageName: node
   linkType: hard
 
