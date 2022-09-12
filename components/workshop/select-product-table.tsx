@@ -122,7 +122,7 @@ export default function SelectProductTable(
   useEffect(() => {
     setDisplayProducts(
       data.products.filter((product) => productFilter(product, lastSelected, availableHours, timeFilterValue, rank)));
-  }, [lastSelected, availableHours, timeFilterValue]);
+  }, [lastSelected, availableHours, timeFilterValue, rank]);
 
   function onTimeFilterChange(e: ChangeEvent) {
     const value = (e.target as HTMLInputElement).value;

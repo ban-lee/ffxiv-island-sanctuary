@@ -80,4 +80,7 @@ export interface IsItemPouch {
 
 export interface SanctuaryInfo {
   rank: number;
+  workshop1Level: number;
+  workshop2Level: number;
+  workshop3Level: number;
 }
