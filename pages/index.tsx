@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import Header from 'components/layout/header';
 import ImportTrend from 'components/trend/import-trend';
 import Layout from 'components/layout/layout';
@@ -7,6 +6,7 @@ import styles from 'styles/ffxiv.module.scss';
 import TrendTable from 'components/trend/trend-table';
 import Workshop from 'components/workshop/workshop';
 import { Button } from 'reactstrap';
+import { cloneDeep } from 'lodash';
 import { IsItemTrend, SanctuaryInfo } from 'types';
 import { NextPage } from 'next';
 import { useLocalStorage } from 'hooks/useLocalStorage';
@@ -30,7 +30,7 @@ const IslandSanctuaryPage: NextPage = () => {
   const [view, setView] = useState(View.WORKSHOPS);
   const [viewButtonText, setViewButtonText] = useState('View Trends');
   const [trendData, setTrendData] = useLocalStorage<Map<string, IsItemTrend>>('is-trend-data', new Map());
-  const [sanctuary, setSanctuary] = useLocalStorage('is-sanctuary', _.cloneDeep(DEFAULT_SANCTUARY_INFO));
+  const [sanctuary, setSanctuary] = useLocalStorage('is-sanctuary', cloneDeep(DEFAULT_SANCTUARY_INFO));
 
   function toggleTrendView() {
     if (view === View.WORKSHOPS) {

@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { debounce } from 'lodash';
 import { IsItemTrend } from 'types';
 import { parse } from 'csv-parse/sync';
 import { SetState } from 'types';
@@ -25,7 +25,7 @@ export default function ImportTrend({setTrendData}: ImportTrendProps): JSX.Eleme
     setIsModalOpen((curr) => !curr);
   }).current;
 
-  const onChangeTrendData = useMemo(() => _.debounce((e: ChangeEvent) => {
+  const onChangeTrendData = useMemo(() => debounce((e: ChangeEvent) => {
     try {
       const value = (e.target as HTMLInputElement).value;
       const parsedRaw = parse(value, {
