@@ -12,7 +12,10 @@
   },
   "search.exclude": {
     "**/.yarn": true,
-    "**/.pnp.*": true
+    "**/yarn.lock": true,
+    "**/.pnp.*": true,
+    "**/data/*": true,
+    "**/out/*": true,
   },
   "eslint.nodePath": ".yarn/sdks",
   "typescript.tsdk": ".yarn/sdks/typescript/lib",

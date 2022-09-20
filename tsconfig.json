@@ -6,7 +6,6 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "jsx": "preserve",
     "isolatedModules": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
@@ -16,6 +15,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES6",
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"],
