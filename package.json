@@ -12,15 +12,21 @@
     "deploy": "copy NUL out/.nojekyll && git add out/ && git commit -m \"Deploy web app to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/server": "^11.10.0",
+    "@mantine/core": "^5.4.0",
+    "@mantine/hooks": "^5.4.0",
+    "@mantine/modals": "^5.4.0",
+    "@mantine/next": "^5.4.0",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.1",
     "bootstrap-icons": "^1.9.1",
     "csv-parse": "^5.3.0",
     "lodash": "^4.17.21",
-    "next": "^12.3.0",
+    "next": "^12.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "reactstrap": "9.1.1",
+    "reactstrap": "^9.1.4",
     "sass": "^1.54.9",
     "uuid": "^9.0.0"
   },
