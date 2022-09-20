@@ -1,14 +1,6 @@
 import SanctuaryForm from 'components/sanctuary-form/sanctuary-form';
-import styles from './main-menu.module.scss';
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Modal,
-  ModalBody,
-  ModalHeader
-  } from 'reactstrap';
+import { Burger, Group, Menu, Title } from '@mantine/core';
+import { openModal } from '@mantine/modals';
 import { SanctuaryInfo, SetState } from 'types';
 import { useState } from 'react';
 
@@ -19,47 +11,58 @@ interface MainMenuProps {
 
 export default function MainMenu({sanctuary, setSanctuary}: MainMenuProps): JSX.Element {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const label = isMenuOpen ? 'Close menu' : 'Open menu';
 
-  function toggleMenu() {
-    setIsMenuOpen((curr) => !curr);
-  }
-
-  function toggleModal() {
-    setIsModalOpen((curr) => !curr);
+  function openSanctuaryInfoModal() {
+    openModal({
+      centered: true,
+      closeButtonLabel: 'Close Sanctuary Info',
+      title: (<Title order={3}>Sanctuary Info</Title>),
+      children: (
+        <SanctuaryForm sanctuary={sanctuary} setSanctuary={setSanctuary}></SanctuaryForm>
+      ),
+    });
   }
 
   return (
-    <>
-      <div className={`${styles['rank']}`}>
+    <Group>
+      <div css={(theme) => ({color: theme.white})}>
         Rank: {sanctuary.rank}
       </div>
-      <Dropdown
-          menuRole="menu"
-          inNavbar
-          isOpen={isMenuOpen}
-          toggle={toggleMenu}>
-        <DropdownToggle
-            className={styles['main-menu-button']}
-            color="light">
-          <i className="bi bi-list"></i>
-        </DropdownToggle>
-        <DropdownMenu className={styles['dropdown-menu']}>
-          <DropdownItem onClick={toggleModal}>
+      <Menu
+          shadow="md"
+          position="bottom-end"
+          width={250}
+          opened={isMenuOpen}
+          onChange={setIsMenuOpen}>
+        <Menu.Target>
+          <Burger
+            sx={(theme) => ({
+              height: '44px',
+              width: '44px',
+              '&:hover': {
+                backgroundColor: theme.colors.dark,
+              },
+            })}
+            styles={{
+              burger: {
+                margin: '0 auto',
+              }
+            }}
+            color="white"
+            size="sm"
+            opened={isMenuOpen}
+            aria-label={label}
+          />
+        </Menu.Target>
+        <Menu.Dropdown>
+          <Menu.Item
+              icon={<i className="bi bi-gear"></i>}
+              onClick={openSanctuaryInfoModal}>
             Set Sanctuary Info
-          </DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-      <Modal isOpen={isModalOpen}
-          toggle={toggleModal}
-          centered>
-        <ModalHeader toggle={toggleModal}>
-          Sanctuary Info
-        </ModalHeader>
-        <ModalBody>
-          <SanctuaryForm sanctuary={sanctuary} setSanctuary={setSanctuary}></SanctuaryForm>
-        </ModalBody>
-      </Modal>
-    </>
+          </Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
+    </Group>
   );
 }

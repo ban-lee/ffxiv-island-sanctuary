@@ -47,7 +47,7 @@ const IslandSanctuaryPage: NextPage = () => {
       title: TITLE,
       description: 'Workshop Helper',
   }}>
-    <main>
+    <>
       <Header title={TITLE}>
         <MainMenu sanctuary={sanctuary} setSanctuary={setSanctuary}></MainMenu>
       </Header>
@@ -85,7 +85,7 @@ const IslandSanctuaryPage: NextPage = () => {
           <TrendTable trendData={trendData}></TrendTable>
         }
       </div>
-    </main>
+    </>
   </Layout>);
 }
 

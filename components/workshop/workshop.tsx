@@ -151,10 +151,10 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
               </div>
               <div className={styles['timeslot-categories']}>
                 <Chip
-                    option={{value: product.purposeCat, text: product.purposeCat, color: 'light-blue'}} />
+                    option={{value: product.purposeCat, label: product.purposeCat, color: 'blue'}} />
 
                 {product.materialCat && <Chip
-                    option={{value: product.materialCat, text: product.materialCat, color: 'purple'}} />}
+                    option={{value: product.materialCat, label: product.materialCat, color: 'grape'}} />}
               </div>
             </div>);
         })}

@@ -1,6 +1,11 @@
 import React from 'react';
-import styles from './header.module.scss';
-import { Navbar, NavbarBrand } from 'reactstrap';
+import {
+  createStyles,
+  Group,
+  Header as MantineHeader,
+  ThemeIcon,
+  Title,
+  } from '@mantine/core';
 
 interface HeaderProps {
   children?: React.ReactNode;
@@ -8,21 +13,51 @@ interface HeaderProps {
   homeRoute?: string;
 }
 
-export default function Header({children, title, homeRoute}: HeaderProps) {
+const useStyles = createStyles((theme) => ({
+  header: {
+    backgroundColor: theme.colors.dark[6],
+    color: theme.white,
+
+    display: 'flex',
+    alignItems: 'center',
+    height: 56,
+    padding: '0 8px',
+
+    '> div': {
+      marginRight: '8px',
+
+      '&:last-child': {
+        marginRight: 0,
+      }
+    }
+  },
+}));
+
+export default function Header({children, title}: HeaderProps) {
+  const { classes } = useStyles();
+
   return (
-    <header className={styles['header']}>
-      <Navbar color="dark" dark>
-        <div className={styles['header-icon']}>
-          <i className="icon bi-sun-fill"></i>
+    <>
+      <MantineHeader height={56} className={classes.header}>
+        <div>
+          <ThemeIcon
+                color="dark"
+                sx={{
+                  'i': {
+                    fontSize: 20,
+                    lineHeight: 20,
+                  },
+                }}
+                size={44}>
+            <i className="icon bi-sun-fill"></i>
+          </ThemeIcon>
         </div>
-        <NavbarBrand className="me-auto">
-          {title} &nbsp;
-        </NavbarBrand>
-
-        {children}
-
-      </Navbar>
+        <Title order={1} sx={{flex: '1 1 auto'}}>{title}</Title>
+        <div>
+          {children}
+        </div>
+      </MantineHeader>
       <div className="spacer2"></div>
-    </header>
+    </>
   );
 }

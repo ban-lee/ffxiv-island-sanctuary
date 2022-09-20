@@ -1,16 +1,20 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export type Color =
-  | 'dark-blue'
-  | 'light-blue'
-  | 'teal'
   | 'green'
   | 'yellow'
   | 'orange'
   | 'red'
   | 'pink'
   | 'purple'
-  | 'gray';
+  | 'gray'
+  | 'dark'
+  | 'grape'
+  | 'violet'
+  | 'indigo'
+  | 'blue'
+  | 'cyan'
+  | 'lime';
 
 export type SetState<T> = Dispatch<SetStateAction<T>>;
 
