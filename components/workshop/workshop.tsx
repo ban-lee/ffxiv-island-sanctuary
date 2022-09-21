@@ -2,11 +2,31 @@ import Chip from 'components/chip/chip';
 import ScheduleHours from './schedule-hours';
 import SelectProductTable from './select-product-table';
 import styles from './workshop.module.scss';
-import { Button, CloseButton, Modal, Title, Tooltip } from '@mantine/core';
+import {
+  Button,
+  CloseButton,
+  createStyles,
+  Modal,
+  Title,
+  Tooltip
+  } from '@mantine/core';
 import { getId } from 'utils/id-utils';
 import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
+
+const useStyles = createStyles((theme) => ({
+  timelot: {
+    backgroundColor: theme.colors.yellow[0],
+    border: `1px solid ${theme.colors.yellow[4]}`,
+  },
+  bonus: {
+    backgroundColor: theme.colors.teal[5],
+  },
+  noBonus: {
+    backgroundColor: theme.colors.gray[5],
+  }
+}));
 
 enum InsertMode {
   ABOVE,
@@ -27,6 +47,8 @@ function calculateBonus(currentProduct: IsProductWithKey, previousProduct?: IsPr
 }
 
 export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: WorkshopProps): JSX.Element {
+  const { classes } = useStyles();
+
   const [selectedProducts, setSelectedProducts] =
       useLocalStorage<IsProductWithKey[]>(`${storageKeyPrefix}is-selected-products`, []);
   const [availableHours, setAvailableHours] = useState(24);
@@ -125,19 +147,21 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
 
           return (
             <div key={product.key}
-                className={styles['timeslot']}
+                className={`${classes.timelot} ${styles['timeslot']}`}
                 style={{'height': `${height}%` }}>
               <div className={styles['timeslot-header']}>
-                <div className={styles['timeslot-icon']}>
+                <div
+                    css={(theme) => ({color: theme.white})}
+                    className={styles['timeslot-icon']}>
                   {hasBonus &&
                     <Tooltip label="Efficiency Bonus!" withinPortal>
-                      <div className={styles['bonus']}>
+                      <div className={classes.bonus}>
                         <i className="bi bi-stars"></i>
                       </div>
                     </Tooltip>}
                   {!hasBonus &&
                     <Tooltip label="No bonus" withinPortal>
-                      <div className={styles['no-bonus']}>
+                      <div className={classes.noBonus}>
                         <i className="bi bi-dash-lg"></i>
                       </div>
                     </Tooltip>}
@@ -147,8 +171,9 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
                 </div>
                 <div className={styles['timeslot-remove']}>
                   <CloseButton
-                      size="xl"
-                      aria-label={`Remove product ${product.item} from schedule`}
+                      size="lg"
+                      variant="transparent"
+                      aria-label={`Remove ${product.item} from schedule`}
                       onClick={() => onRemoveProduct(index)} />
                 </div>
               </div>

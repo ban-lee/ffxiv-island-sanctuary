@@ -1,16 +1,13 @@
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-
-$dark-blue: $blue-100;
-$light-blue: $cyan-100;
-$teal: $teal-100;
-$green: $green-100;
-$yellow: $yellow-100;
-$orange: $orange-100;
-$red: $red-100;
-$pink: $pink-100;
-$purple: $purple-100;
-$gray: $gray-200;
+$dark-blue: #CFDFFF;
+$light-blue: #D0F0FD;
+$teal: #C2F5E9;
+$green: #D1F7C4;
+$yellow: #FFEAB6;
+$orange: #FEE2D5;
+$red: #fcd6d6;
+$pink: #FFCCFA;
+$purple: #EDE2FE;
+$gray: #ebebeb;
 
 .dark-blue {
   background-color: $dark-blue;
