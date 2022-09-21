@@ -1,32 +1,17 @@
-import Chip from 'components/chip/chip';
 import ScheduleHours from './schedule-hours';
 import SelectProductTable from './select-product-table';
 import styles from './workshop.module.scss';
+import { getId } from 'utils/id-utils';
+import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
+import { Schedule } from './schedule';
+import { useCallback, useEffect, useState } from 'react';
+import { useLocalStorage } from 'hooks/useLocalStorage';
 import {
   Button,
-  CloseButton,
   createStyles,
   Modal,
   Title,
-  Tooltip
   } from '@mantine/core';
-import { getId } from 'utils/id-utils';
-import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
-import { useCallback, useEffect, useState } from 'react';
-import { useLocalStorage } from 'hooks/useLocalStorage';
-
-const useStyles = createStyles((theme) => ({
-  timelot: {
-    backgroundColor: theme.colors.yellow[0],
-    border: `1px solid ${theme.colors.yellow[4]}`,
-  },
-  bonus: {
-    backgroundColor: theme.colors.teal[5],
-  },
-  noBonus: {
-    backgroundColor: theme.colors.gray[5],
-  }
-}));
 
 enum InsertMode {
   ABOVE,
@@ -36,19 +21,11 @@ enum InsertMode {
 interface WorkshopProps {
   storageKeyPrefix: string;
   sanctuaryInfo: SanctuaryInfo;
+  title: string;
   trendData: Map<string, IsItemTrend>;
 }
 
-function calculateBonus(currentProduct: IsProductWithKey, previousProduct?: IsProductWithKey) {
-  if (!previousProduct) return false;
-
-  return previousProduct.purposeCat === currentProduct.purposeCat ||
-      previousProduct.materialCat === currentProduct.materialCat;
-}
-
-export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: WorkshopProps): JSX.Element {
-  const { classes } = useStyles();
-
+export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: WorkshopProps): JSX.Element {
   const [selectedProducts, setSelectedProducts] =
       useLocalStorage<IsProductWithKey[]>(`${storageKeyPrefix}is-selected-products`, []);
   const [availableHours, setAvailableHours] = useState(24);
@@ -83,13 +60,6 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
     });
   };
 
-  function onRemoveProduct(index: number) {
-    setSelectedProducts((curr) => {
-      curr.splice(index, 1);
-      return [...curr];
-    });
-  }
-
   function onClearProducts() {
     setSelectedProducts([]);
   }
@@ -108,8 +78,11 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
   }, [availableHours, usedHours, selectedProducts]);
 
   return (
-    <div>
-      <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
+    <>
+      <div>
+        <Title order={3}>{title}</Title>
+        <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
+      </div>
       <div className={styles['add-btns']}>
         <div>
           <Button
@@ -136,57 +109,14 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
               aria-label="Remove all products from schedule"
               onClick={() => onClearProducts()}
               rightIcon={<i className="bi bi-x-lg"></i>}>
-            Clear
+            Remove All
           </Button>
         </div>
       </div>
-      <div className={styles.scheduled}>
-        {selectedProducts.map((product, index) => {
-          const hasBonus = calculateBonus(product, selectedProducts[index - 1]);
-          const height = 100/(24/product.time);
-
-          return (
-            <div key={product.key}
-                className={`${classes.timelot} ${styles['timeslot']}`}
-                style={{'height': `${height}%` }}>
-              <div className={styles['timeslot-header']}>
-                <div
-                    css={(theme) => ({color: theme.white})}
-                    className={styles['timeslot-icon']}>
-                  {hasBonus &&
-                    <Tooltip label="Efficiency Bonus!" withinPortal>
-                      <div className={classes.bonus}>
-                        <i className="bi bi-stars"></i>
-                      </div>
-                    </Tooltip>}
-                  {!hasBonus &&
-                    <Tooltip label="No bonus" withinPortal>
-                      <div className={classes.noBonus}>
-                        <i className="bi bi-dash-lg"></i>
-                      </div>
-                    </Tooltip>}
-                </div>
-                <div className={styles['timeslot-title']}>
-                  <span>{product.item}</span> ({product.time})
-                </div>
-                <div className={styles['timeslot-remove']}>
-                  <CloseButton
-                      size="lg"
-                      variant="transparent"
-                      aria-label={`Remove ${product.item} from schedule`}
-                      onClick={() => onRemoveProduct(index)} />
-                </div>
-              </div>
-              <div className={styles['timeslot-categories']}>
-                <Chip
-                    option={{value: product.purposeCat, label: product.purposeCat, color: 'blue'}} />
-
-                {product.materialCat && <Chip
-                    option={{value: product.materialCat, label: product.materialCat, color: 'grape'}} />}
-              </div>
-            </div>);
-        })}
-      </div>
+      <Schedule
+        selectedProducts={selectedProducts}
+        setSelectedProducts={setSelectedProducts}
+      />
       <Modal
           centered
           size="xl"
@@ -206,5 +136,5 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
               usedHours={usedHours} />
         </>
       </Modal>
-    </div>);
+    </>);
 }

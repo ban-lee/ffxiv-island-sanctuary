@@ -2,15 +2,14 @@ import Header from 'components/layout/header';
 import ImportTrend from 'components/trend/import-trend';
 import Layout from 'components/layout/layout';
 import MainMenu from 'components/main-menu/main-menu';
-import styles from 'styles/ffxiv.module.scss';
 import TrendTable from 'components/trend/trend-table';
-import Workshop from 'components/workshop/workshop';
-import { Button, Group, Title } from '@mantine/core';
+import { Button, Group } from '@mantine/core';
 import { cloneDeep } from 'lodash';
 import { IsItemTrend, SanctuaryInfo } from 'types';
 import { NextPage } from 'next';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { useState } from 'react';
+import { Workshop } from 'components/workshop/workshop';
 
 const TITLE = 'Island Sanctuary Planner';
 
@@ -62,38 +61,45 @@ const IslandSanctuaryPage: NextPage = () => {
         <div className={'spacer2'}></div>
 
         {view === View.WORKSHOPS &&
-          <div
-              className={`${styles.workshops}`}
-              css={(theme) => ({
+          <Group grow position="center"
+              sx={(theme) => ({
+                '> div': {
+                  backgroundColor: theme.colors.gray[1],
+                  border: `1px solid ${theme.colors.gray[2]}`,
+                  boxShadow: theme.shadows.sm,
+                  maxWidth: 500,
+                  padding: 8,
+                  width: '30%',
+                },
                 'h3': {
-                  borderBottom: `1px solid ${theme.colors.blue[4]}`
+                  textAlign: 'center',
+                  padding: '4px 8px 0 8px',
                 },
-                '.workshop': {
-                  border: `1px solid ${theme.colors.blue[4]}`
-                },
+                gap: 16,
+                margin: '0 16px',
               })}>
-            <div className={`workshop ${styles.workshop}`}>
-              <Title order={3}>Workshop 1</Title>
+            <div>
               <Workshop
+                  title="Workshop 1"
                   storageKeyPrefix={'w1-'}
                   sanctuaryInfo={sanctuary}
                   trendData={trendData} />
             </div>
-            <div className={`workshop ${styles.workshop}`}>
-              <Title order={3}>Workshop 2</Title>
+            <div>
               <Workshop
+                  title="Workshop 2"
                   storageKeyPrefix={'w2-'}
                   sanctuaryInfo={sanctuary}
                   trendData={trendData} />
             </div>
-            <div className={`workshop ${styles.workshop}`}>
-              <Title order={3}>Workshop 3</Title>
+            <div>
               <Workshop
+                  title="Workshop 3"
                   storageKeyPrefix={'w3-'}
                   sanctuaryInfo={sanctuary}
                   trendData={trendData} />
             </div>
-          </div>}
+          </Group>}
         {view === View.TREND_DATA &&
           <TrendTable trendData={trendData}></TrendTable>
         }
