@@ -1,7 +1,7 @@
 {
   "name": "ffxiv-island-sanctuary",
   "packageManager": "yarn@3.2.3",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "copy NUL out/.nojekyll && git add out/ && git commit -m \"Deploy web app to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
+    "deploy": "New-Item out/.nojekyll -type file && git add out/ && git commit -m \"Deploy web app to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
