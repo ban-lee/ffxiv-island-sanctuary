@@ -2,8 +2,8 @@ import data from 'data/island-sanctuary.json';
 import styles from './workshop.module.scss';
 import { calculateModifier, calculateNormalizedValue } from 'utils/workshop';
 import { ChangeEvent, CSSProperties, useEffect, useState } from 'react';
-import { Col, FormGroup, Input, Label, Table } from 'reactstrap';
 import { DemandShift, IsItemTrend, IsProduct } from 'types';
+import { NativeSelect, Table } from '@mantine/core';
 
 interface SelectProductTableProps {
   rank: number;
@@ -147,23 +147,20 @@ export default function SelectProductTable(
     <div>
       <div className={styles['select-filters']}>
         <h5>Filters</h5>
-        <FormGroup row>
-          <Label for="time-filter" size="sm" md={4}>Time</Label>
-          <Col md={8}>
-            <Input id="time-filter"
-                type="select"
-                bsSize="sm"
+            <NativeSelect
+                id="time-filter"
+                label="Time"
+                data={[
+                  {value: '0', label: 'None'},
+                  {value: '4', label: '4'},
+                  {value: '6', label: '6'},
+                  {value: '8', label: '8'},
+                ]}
                 onChange={onTimeFilterChange}>
-              <option value="0">None</option>
-              <option value="4">4</option>
-              <option value="6">6</option>
-              <option value="8">8</option>
-            </Input>
-          </Col>
-        </FormGroup>
+            </NativeSelect>
       </div>
       <div className={styles['select-table']}>
-        <Table size="sm" hover>
+        <Table fontSize="sm" highlightOnHover>
           <thead>
             <tr>
               <th className={styles['col-product']}>Product</th>

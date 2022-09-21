@@ -5,7 +5,7 @@ import MainMenu from 'components/main-menu/main-menu';
 import styles from 'styles/ffxiv.module.scss';
 import TrendTable from 'components/trend/trend-table';
 import Workshop from 'components/workshop/workshop';
-import { Button } from 'reactstrap';
+import { Button } from '@mantine/core';
 import { cloneDeep } from 'lodash';
 import { IsItemTrend, SanctuaryInfo } from 'types';
 import { NextPage } from 'next';
@@ -55,7 +55,7 @@ const IslandSanctuaryPage: NextPage = () => {
       <div className={`${styles.container}`}>
         <div className={styles['trend-controls']}>
           <ImportTrend setTrendData={setTrendData} />
-          <Button onClick={() => toggleTrendView()}>{viewButtonText}</Button>
+          <Button color="violet" onClick={() => toggleTrendView()}>{viewButtonText}</Button>
         </div>
         <div className={'spacer2'}></div>
         {view === View.WORKSHOPS && <div className={`${styles.workshops} row`}>

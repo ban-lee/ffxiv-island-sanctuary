@@ -1,16 +1,24 @@
-import styles from './trend.module.scss';
+import { createStyles, Table, Title } from '@mantine/core';
 import { IsItemTrend } from 'types';
-import { Table } from 'reactstrap';
 
 interface TrendTableProps {
   trendData: Map<string, IsItemTrend>;
 }
 
+const useStyles = createStyles((theme) => ({
+  trendData: {
+    margin: '0 16px',
+    padding: '0 8px',
+  },
+}));
+
 export default function TrendTable({trendData}: TrendTableProps): JSX.Element {
+  const { classes } = useStyles();
+
   return (
-    <div className={`${styles['trend-data']}`}>
-      <h3>Trend Data</h3>
-      <Table size="sm" hover>
+    <div className={classes.trendData}>
+      <Title order={3}>Trend Data</Title>
+      <Table fontSize="sm" highlightOnHover>
         <thead>
           <tr>
             <th>Product</th>

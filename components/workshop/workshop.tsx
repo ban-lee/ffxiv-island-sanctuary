@@ -2,18 +2,11 @@ import Chip from 'components/chip/chip';
 import ScheduleHours from './schedule-hours';
 import SelectProductTable from './select-product-table';
 import styles from './workshop.module.scss';
+import { Button, CloseButton, Modal, Title, Tooltip } from '@mantine/core';
 import { getId } from 'utils/id-utils';
 import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import {
-  Button,
-  CloseButton,
-  Modal,
-  ModalBody,
-  ModalHeader,
-  UncontrolledTooltip,
-  } from 'reactstrap';
 
 enum InsertMode {
   ABOVE,
@@ -97,25 +90,31 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
       <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
       <div className={styles['add-btns']}>
         <div>
-          <Button color="primary"
+          <Button
               disabled={availableHours < 4}
-              onClick={() => showItemSelect(InsertMode.BELOW)}>
-            Add <i className="bi bi-arrow-down-circle-fill"></i>
+              onClick={() => showItemSelect(InsertMode.BELOW)}
+              aria-label="Add products from start"
+              rightIcon={<i className="bi bi-arrow-down"></i>}>
+            Add
           </Button>
         </div>
 
         <div>
-          <Button color="primary"
+          <Button
               disabled={availableHours < 4}
-              onClick={() => showItemSelect(InsertMode.ABOVE)}>
-            Add <i className="bi bi-arrow-up-circle-fill"></i>
+              aria-label="Add products from end"
+              onClick={() => showItemSelect(InsertMode.ABOVE)}
+              rightIcon={<i className="bi bi-arrow-up"></i>}>
+            Add
           </Button>
         </div>
         <div>
-          <Button color="danger"
+          <Button color="red"
               disabled={selectedProducts.length === 0}
-              onClick={() => onClearProducts()}>
-            Clear <i className="bi bi-x-circle-fill"></i>
+              aria-label="Remove all products from schedule"
+              onClick={() => onClearProducts()}
+              rightIcon={<i className="bi bi-x-lg"></i>}>
+            Clear
           </Button>
         </div>
       </div>
@@ -131,22 +130,26 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
               <div className={styles['timeslot-header']}>
                 <div className={styles['timeslot-icon']}>
                   {hasBonus &&
-                    <div id={product.key} className={styles['bonus']}>
-                      <i className="bi bi-stars"></i>
-                      <UncontrolledTooltip target={product.key}>
-                        Efficiency Bonus!
-                      </UncontrolledTooltip>
-                    </div>}
+                    <Tooltip label="Efficiency Bonus!" withinPortal>
+                      <div className={styles['bonus']}>
+                        <i className="bi bi-stars"></i>
+                      </div>
+                    </Tooltip>}
                   {!hasBonus &&
-                    <div id={product.key} className={styles['no-bonus']}>
-                      <i className="bi bi-dash-lg"></i>
-                    </div>}
+                    <Tooltip label="No bonus" withinPortal>
+                      <div className={styles['no-bonus']}>
+                        <i className="bi bi-dash-lg"></i>
+                      </div>
+                    </Tooltip>}
                 </div>
                 <div className={styles['timeslot-title']}>
                   <span>{product.item}</span> ({product.time})
                 </div>
                 <div className={styles['timeslot-remove']}>
-                  <CloseButton onClick={() => onRemoveProduct(index)}></CloseButton>
+                  <CloseButton
+                      size="xl"
+                      aria-label={`Remove product ${product.item} from schedule`}
+                      onClick={() => onRemoveProduct(index)} />
                 </div>
               </div>
               <div className={styles['timeslot-categories']}>
@@ -159,17 +162,16 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
             </div>);
         })}
       </div>
-      <Modal isOpen={isModalOpen}
-          toggle={() => setIsModalOpen((curr) => !curr)}
-          size="lg"
-          centered>
-        <ModalHeader toggle={() => setIsModalOpen((curr) => !curr)}>
-          Select Product
-        </ModalHeader>
-        <div className={`${styles['table-sticky']}`}>
-          <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
-        </div>
-        <ModalBody>
+      <Modal
+          centered
+          size="xl"
+          opened={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title={<Title order={3}>Select Products</Title>}>
+        <>
+          <div className={`${styles['table-sticky']}`}>
+            <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
+          </div>
           <SelectProductTable
               rank={sanctuaryInfo.rank}
               onSelectProduct={onSelectProduct}
@@ -177,7 +179,7 @@ export default function Workshop({storageKeyPrefix, sanctuaryInfo, trendData}: W
               trendData={trendData}
               availableHours={availableHours}
               usedHours={usedHours} />
-        </ModalBody>
+        </>
       </Modal>
     </div>);
 }

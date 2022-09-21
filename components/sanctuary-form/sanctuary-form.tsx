@@ -1,14 +1,6 @@
-import {
-  Button,
-  Col,
-  Form,
-  FormGroup,
-  Input,
-  Label
-  } from 'reactstrap';
+import { Button, NumberInput } from '@mantine/core';
 import { FormEvent } from 'react';
 import { SanctuaryInfo, SetState } from 'types';
-// import styles from './main-menu.module.scss';
 
 interface SanctuaryFormProps {
   sanctuary: SanctuaryInfo;
@@ -36,17 +28,21 @@ export default function SanctuaryForm({sanctuary, setSanctuary}: SanctuaryFormPr
 
   return (
     <>
-      <Form onSubmit={onSubmit}>
-        <FormGroup row>
-          <Label for={FormFields.rank} md={4}>Sanctuary Rank</Label>
-          <Col>
-            <Input id={FormFields.rank} type="number" min="1" max="10" defaultValue={sanctuary.rank} />
-          </Col>
-        </FormGroup>
-        <div className="text-end">
-          <Button type="submit" color="primary">Save</Button>
+      <form onSubmit={onSubmit}>
+        <NumberInput
+            id={FormFields.rank}
+            min={1}
+            max={10}
+            defaultValue={sanctuary.rank}
+            label="Rank"
+        />
+
+        <div className="spacer2"></div>
+
+        <div css={{textAlign: 'end'}}>
+          <Button type="submit">Save</Button>
         </div>
-      </Form>
+      </form>
     </>
   );
 }

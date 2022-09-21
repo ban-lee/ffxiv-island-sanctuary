@@ -4,7 +4,7 @@ import '@emotion/react';
 /**
  * Custom Mantine Colors
  */
- type ExtendedCustomColors = 'igdb' | DefaultMantineColor;
+ type ExtendedCustomColors = DefaultMantineColor;
 
  declare module '@mantine/core' {
    export interface MantineThemeColorsOverride {
