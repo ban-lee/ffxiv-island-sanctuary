@@ -5,7 +5,7 @@ import MainMenu from 'components/main-menu/main-menu';
 import styles from 'styles/ffxiv.module.scss';
 import TrendTable from 'components/trend/trend-table';
 import Workshop from 'components/workshop/workshop';
-import { Button } from '@mantine/core';
+import { Button, Group, Title } from '@mantine/core';
 import { cloneDeep } from 'lodash';
 import { IsItemTrend, SanctuaryInfo } from 'types';
 import { NextPage } from 'next';
@@ -52,35 +52,39 @@ const IslandSanctuaryPage: NextPage = () => {
         <MainMenu sanctuary={sanctuary} setSanctuary={setSanctuary}></MainMenu>
       </Header>
 
-      <div className={`${styles.container}`}>
-        <div className={styles['trend-controls']}>
+      <div css={{paddingBottom: 16}}>
+
+        <Group align="center" position="center">
           <ImportTrend setTrendData={setTrendData} />
           <Button color="violet" onClick={() => toggleTrendView()}>{viewButtonText}</Button>
-        </div>
+        </Group>
+
         <div className={'spacer2'}></div>
-        {view === View.WORKSHOPS && <div className={`${styles.workshops} row`}>
-          <div className={`${styles.workshop}`}>
-            <h3>Workshop 1</h3>
-            <Workshop
-                storageKeyPrefix={'w1-'}
-                sanctuaryInfo={sanctuary}
-                trendData={trendData} />
-          </div>
-          <div className={`${styles.workshop}`}>
-            <h3>Workshop 2</h3>
-            <Workshop
-                storageKeyPrefix={'w2-'}
-                sanctuaryInfo={sanctuary}
-                trendData={trendData} />
-          </div>
-          <div className={`${styles.workshop}`}>
-            <h3>Workshop 3</h3>
-            <Workshop
-                storageKeyPrefix={'w3-'}
-                sanctuaryInfo={sanctuary}
-                trendData={trendData} />
-          </div>
-        </div>}
+
+        {view === View.WORKSHOPS &&
+          <div className={`${styles.workshops}`}>
+            <div className={`${styles.workshop}`}>
+              <Title order={3}>Workshop 1</Title>
+              <Workshop
+                  storageKeyPrefix={'w1-'}
+                  sanctuaryInfo={sanctuary}
+                  trendData={trendData} />
+            </div>
+            <div className={`${styles.workshop}`}>
+              <Title order={3}>Workshop 2</Title>
+              <Workshop
+                  storageKeyPrefix={'w2-'}
+                  sanctuaryInfo={sanctuary}
+                  trendData={trendData} />
+            </div>
+            <div className={`${styles.workshop}`}>
+              <Title order={3}>Workshop 3</Title>
+              <Workshop
+                  storageKeyPrefix={'w3-'}
+                  sanctuaryInfo={sanctuary}
+                  trendData={trendData} />
+            </div>
+          </div>}
         {view === View.TREND_DATA &&
           <TrendTable trendData={trendData}></TrendTable>
         }
