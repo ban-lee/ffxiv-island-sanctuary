@@ -1,7 +1,7 @@
 import data from 'data/island-sanctuary.json';
 import styles from './select-product-table.module.scss';
-import { ChangeEvent, CSSProperties, useEffect, useState } from 'react';
-import { DemandShift, IsItemTrend, IsProduct } from 'types';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { DemandShiftChip } from 'components/demand-shift-chip/demand-shift-chip';
 import {
   Group,
   NativeSelect,
@@ -10,6 +10,7 @@ import {
   ThemeIcon,
   Tooltip
   } from '@mantine/core';
+import { IsItemTrend, IsProduct } from 'types';
 import { TrendChip } from 'components/trend-chip/trend-chip';
 
 interface SelectProductTableProps {
@@ -39,49 +40,6 @@ function productFilter(
   const isRankRequirementMet = rank >= current.rank;
 
   return !matchSameProduct && matchProductCat && matchAvailableHours && matchTimeFilter && isRankRequirementMet;
-}
-
-function getDemandShift(trend? : IsItemTrend): JSX.Element {
-  if (!trend?.demandShift) return <></>;
-
-  let color = '';
-  let icon = '';
-
-  switch (trend.demandShift) {
-    case DemandShift.SKYROCKETING:
-      color = `rgba(32, 201, 151, 1)`;
-      icon = 'bi-arrow-up-circle-fill';
-      break;
-    case DemandShift.INCREASING:
-      color = `rgba(32, 201, 151, 0.6)`;
-      icon = 'bi-arrow-up-right-circle-fill';
-      break;
-    case DemandShift.NONE:
-      color = `rgba(0, 0, 0, 0.5)`;
-      icon = 'bi-dash-circle-fill';
-      break;
-    case DemandShift.DECREASING:
-      color = `rgba(220, 53, 69, 0.7)`;
-      icon = 'bi-arrow-down-right-circle-fill';
-      break;
-    case DemandShift.PLUMMETING:
-      color = `rgba(220, 53, 69, 1)`;
-      icon = 'bi-arrow-down-circle-fill';
-      break;
-  }
-
-  const style: CSSProperties = {
-    'color': color,
-  };
-
-  return (
-    <div className={styles['demand-shift']}>
-      <div className={`${styles['icon-container']}`} style={style}>
-        <i className={`bi ${icon}`}></i>
-      </div>
-      <div>{trend.demandShift}</div>
-    </div>
-    );
 }
 
 export function SelectProductTable(
@@ -114,7 +72,7 @@ export function SelectProductTable(
         <td css={{textAlign: 'center'}}>{product.time}</td>
         <td css={{textAlign: 'center'}}>{product.value}</td>
         <td><TrendChip trend={trend} /></td>
-        <td>{getDemandShift(trend)}</td>
+        <td><DemandShiftChip trend={trend} /></td>
       </>
     )
   }
@@ -136,14 +94,16 @@ export function SelectProductTable(
         </NativeSelect>
       </div>
       <ScrollArea className={styles['select-table']}>
-        <Table fontSize="sm" highlightOnHover>
+        <Table
+            fontSize="sm"
+            highlightOnHover>
           <thead>
             <tr>
               <th className={styles['col-product']}>Product</th>
               <th className={styles['col-time']}>Time</th>
               <th className={styles['col-value']}>Value</th>
               <th className={styles['col-trend']}>
-                <Tooltip label="Value modifier from Popularity and Supply">
+                <Tooltip label="Value modifier from Popularity and Supply" withinPortal>
                   <Group>
                     Trend
                     <ThemeIcon size="xs" radius="lg">
@@ -165,6 +125,7 @@ export function SelectProductTable(
             })}
           </tbody>
         </Table>
+        <div className="spacer1"></div>
       </ScrollArea>
     </div>
   );

@@ -1,6 +1,6 @@
 import { calculateModifier, calculateNormalizedValue } from 'utils/workshop';
 import { CSSProperties } from 'react';
-import { Grid, Group, HoverCard, ThemeIcon } from '@mantine/core';
+import { Grid, Group, HoverCard, Text, ThemeIcon } from '@mantine/core';
 import { IsItemTrend } from 'types';
 
 interface TrendChipProps {
@@ -35,14 +35,15 @@ export function TrendChip({trend}: TrendChipProps): JSX.Element {
         withArrow
         shadow="md">
       <HoverCard.Target>
-        <Group spacing={8}>
+        <Group spacing={8} grow>
           <ThemeIcon
+              sx={{flex: '0 0'}}
               style={style}
               size="sm"
               radius="lg">
             <i className={`bi ${icon}`}></i>
           </ThemeIcon>
-          <div>{(mod * 100).toFixed(0)}%</div>
+          <Text align="right">{(mod * 100).toFixed(0)}%</Text>
         </Group>
       </HoverCard.Target>
       <HoverCard.Dropdown>
