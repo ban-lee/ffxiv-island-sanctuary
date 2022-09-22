@@ -3,6 +3,7 @@ import styles from './workshop.module.scss';
 import {
   Center,
   CloseButton,
+  Container,
   createStyles,
   Grid,
   Group,
@@ -89,21 +90,26 @@ export function Schedule({selectedProducts, setSelectedProducts}: ScheduleProps)
 
       {selectedProducts.length === 0 &&
         <Center className={cx(classes.noBorder, classes.help)}>
-          <ThemeIcon color="gray" size="lg" radius="lg"
-              variant="filled">
-            <i className="bi bi-patch-exclamation"></i>
-          </ThemeIcon>
-          <div css={{maxWidth: 250}}>
+          <Container css={{maxWidth: 250}}>
+            <Center>
+              <ThemeIcon
+                  color="gray"
+                  size="lg"
+                  radius="lg"
+                  variant="filled">
+                <i className="bi bi-patch-exclamation"></i>
+              </ThemeIcon>
+            </Center>
             <Text align="center" mb="sm">Workshop is empty</Text>
-            <Text size="sm" mb="xs">
+            <Text align="justify" size="sm" mb="xs">
               <b>Add <i className="bi bi-arrow-down"></i></b>: To add products starting from the start to end of the
               cycle.
             </Text>
-            <Text size="sm">
+            <Text align="justify" size="sm">
               <b>Add <i className="bi bi-arrow-up"></i></b>: To add products starting from the end to the start of the
               cycle.
             </Text>
-          </div>
+          </Container>
         </Center>}
 
       {selectedProducts.map((product, index) => {

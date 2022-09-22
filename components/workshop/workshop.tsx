@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import {
   Button,
-  createStyles,
+  Group,
   Modal,
   Title,
   } from '@mantine/core';
@@ -83,7 +83,10 @@ export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: Wo
         <Title order={3}>{title}</Title>
         <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
       </div>
-      <div className={styles['add-btns']}>
+      <Group
+          position="center"
+          sx={{padding: '8px 0'}}
+          spacing="xs">
         <div>
           <Button
               disabled={availableHours < 4}
@@ -112,7 +115,7 @@ export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: Wo
             Remove All
           </Button>
         </div>
-      </div>
+      </Group>
       <Schedule
         selectedProducts={selectedProducts}
         setSelectedProducts={setSelectedProducts}
