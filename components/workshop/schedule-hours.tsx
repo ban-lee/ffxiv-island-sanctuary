@@ -36,12 +36,13 @@ export function ScheduleHours({availableHours, usedHours}: ScheduleHoursProps): 
     setScheduledHours([{
       value: usedValue,
       color: 'yellow',
-      label: 'Scheduled',
-      tooltip: usedHours === 24 ? 'Workshop fully scheduled' : `Scheduled ${usedHours} hours`,
+      label: usedHours === 24 ? 'Fully scheduled' : 'Scheduled',
+      tooltip: usedHours === 24 ? '' : `${usedHours} hours scheduled`,
     },{
       value: 100- usedValue,
       color: 'gray',
-      tooltip: availableHours === 24 ? 'Workshop empty' : `Available ${availableHours} hours`,
+      label: availableHours === 24 ? 'Nothing scheduled' : '',
+      tooltip: availableHours === 24 ? '' : `${availableHours} hours free`,
     }]);
   }, [availableHours, usedHours]);
 

@@ -1,4 +1,3 @@
-import styles from './workshop.module.scss';
 import {
   Center,
   CloseButton,
@@ -36,6 +35,10 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colors.yellow[0],
     borderTop: `1px solid ${theme.colors.gray[5]}`,
     padding: 8,
+  },
+
+  timeslotHeader: {
+    marginBottom: 8,
   },
 
   timeslotBonus: {
@@ -121,7 +124,7 @@ export function Schedule({selectedProducts, setSelectedProducts}: ScheduleProps)
           <div key={product.key}
               className={cx(classes.timeslot, isLastAndFull ? classes.noBorder : '')}
               css={{height}}>
-            <div className={styles['timeslot-header']}>
+            <Group className={classes.timeslotHeader}>
               <div className={classes.timeslotBonus}>
                 {hasBonus &&
                   <Tooltip label="Efficiency Bonus!" withinPortal>
@@ -148,7 +151,7 @@ export function Schedule({selectedProducts, setSelectedProducts}: ScheduleProps)
                     iconSize={24}
                     onClick={() => onRemoveProduct(index)} />
               </Tooltip>
-            </div>
+            </Group>
             <Grid gutter={4} sx={(theme) => ({fontSize: theme.fontSizes.xs, textAlign: 'center'})}>
               <Grid.Col sx={{'> div': {width: '100%'}}} span={6}>
                 <Chip option={{value: product.purposeCat, label: product.purposeCat, color: 'blue'}} />

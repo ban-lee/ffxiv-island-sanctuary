@@ -147,17 +147,17 @@ export function SelectProductTable(
     <div>
       <div className={styles['select-filters']}>
         <h5>Filters</h5>
-            <NativeSelect
-                id="time-filter"
-                label="Time"
-                data={[
-                  {value: '0', label: 'None'},
-                  {value: '4', label: '4'},
-                  {value: '6', label: '6'},
-                  {value: '8', label: '8'},
-                ]}
-                onChange={onTimeFilterChange}>
-            </NativeSelect>
+        <NativeSelect
+            id="time-filter"
+            label="Time"
+            data={[
+              {value: '0', label: 'None'},
+              {value: '4', label: '4'},
+              {value: '6', label: '6'},
+              {value: '8', label: '8'},
+            ]}
+            onChange={onTimeFilterChange}>
+        </NativeSelect>
       </div>
       <div className={styles['select-table']}>
         <Table fontSize="sm" highlightOnHover>

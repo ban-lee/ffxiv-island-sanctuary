@@ -1,4 +1,4 @@
-import styles from './workshop.module.scss';
+import { Button, Group, Modal, Title } from '@mantine/core';
 import { getId } from 'utils/id-utils';
 import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
 import { Schedule } from './schedule';
@@ -6,16 +6,10 @@ import { ScheduleHours } from './schedule-hours';
 import { SelectProductTable } from 'components/select-product-table/select-product-table';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import {
-  Button,
-  Group,
-  Modal,
-  Title,
-  } from '@mantine/core';
 
 enum InsertMode {
   ABOVE,
-  BELOW
+  BELOW,
 }
 
 interface WorkshopProps {
@@ -25,7 +19,12 @@ interface WorkshopProps {
   trendData: Map<string, IsItemTrend>;
 }
 
-export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: WorkshopProps): JSX.Element {
+export function Workshop({
+  storageKeyPrefix,
+  sanctuaryInfo,
+  title,
+  trendData,
+}: WorkshopProps): JSX.Element {
   const [selectedProducts, setSelectedProducts] =
       useLocalStorage<IsProductWithKey[]>(`${storageKeyPrefix}is-selected-products`, []);
   const [availableHours, setAvailableHours] = useState(24);
@@ -38,9 +37,10 @@ export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: Wo
     if (selectedProducts.length === 0) {
       setLastSelectedProduct(undefined);
     } else {
-      const lastProduct = insertMode === InsertMode.BELOW ?
-          selectedProducts[selectedProducts.length - 1] :
-          selectedProducts[0];
+      const lastProduct =
+        insertMode === InsertMode.BELOW
+          ? selectedProducts[selectedProducts.length - 1]
+          : selectedProducts[0];
       setLastSelectedProduct(lastProduct);
     }
   }, [insertMode, selectedProducts]);
@@ -56,7 +56,9 @@ export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: Wo
         key: getId('is'),
         ...product,
       };
-      return insertMode === InsertMode.BELOW ? [...curr, productWithKey] : [productWithKey, ...curr];
+      return insertMode === InsertMode.BELOW
+        ? [...curr, productWithKey]
+        : [productWithKey, ...curr];
     });
   };
 
@@ -81,7 +83,9 @@ export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: Wo
     <>
       <div>
         <Title order={3}>{title}</Title>
-        <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
+        <ScheduleHours
+            availableHours={availableHours}
+            usedHours={usedHours} />
       </div>
       <Group
           position="center"
@@ -107,7 +111,8 @@ export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: Wo
           </Button>
         </div>
         <div>
-          <Button color="red"
+          <Button
+              color="red"
               disabled={selectedProducts.length === 0}
               aria-label="Remove all products from schedule"
               onClick={() => onClearProducts()}
@@ -127,17 +132,20 @@ export function Workshop({storageKeyPrefix, sanctuaryInfo, title, trendData}: Wo
           onClose={() => setIsModalOpen(false)}
           title={<Title order={3}>Select Products</Title>}>
         <>
-          <div className={`${styles['table-sticky']}`}>
-            <ScheduleHours availableHours={availableHours} usedHours={usedHours} />
-          </div>
+          <ScheduleHours
+              availableHours={availableHours}
+              usedHours={usedHours}
+          />
           <SelectProductTable
               rank={sanctuaryInfo.rank}
               onSelectProduct={onSelectProduct}
               lastSelected={lastSelectedProduct}
               trendData={trendData}
               availableHours={availableHours}
-              usedHours={usedHours} />
+              usedHours={usedHours}
+          />
         </>
       </Modal>
-    </>);
+    </>
+  );
 }
