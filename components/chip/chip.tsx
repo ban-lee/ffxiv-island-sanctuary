@@ -12,7 +12,7 @@ interface ChipProps {
   onClose?: () => void;
 }
 
-export default function Chip({option, onClose}: ChipProps): JSX.Element {
+export function Chip({option, onClose}: ChipProps): JSX.Element {
   const color = option.color ?? 'gray';
 
   const removeButton =

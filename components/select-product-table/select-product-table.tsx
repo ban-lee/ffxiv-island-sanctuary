@@ -1,5 +1,5 @@
 import data from 'data/island-sanctuary.json';
-import styles from './workshop.module.scss';
+import styles from './select-product-table.module.scss';
 import { calculateModifier, calculateNormalizedValue } from 'utils/workshop';
 import { ChangeEvent, CSSProperties, useEffect, useState } from 'react';
 import { DemandShift, IsItemTrend, IsProduct } from 'types';
@@ -108,7 +108,7 @@ function getDemandShift(trend? : IsItemTrend): JSX.Element {
     );
 }
 
-export default function SelectProductTable(
+export function SelectProductTable(
   {
     rank,
     lastSelected,

@@ -1,9 +1,9 @@
-import ScheduleHours from './schedule-hours';
-import SelectProductTable from './select-product-table';
 import styles from './workshop.module.scss';
 import { getId } from 'utils/id-utils';
 import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
 import { Schedule } from './schedule';
+import { ScheduleHours } from './schedule-hours';
+import { SelectProductTable } from 'components/select-product-table/select-product-table';
 import { useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import {

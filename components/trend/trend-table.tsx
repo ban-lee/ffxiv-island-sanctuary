@@ -12,7 +12,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function TrendTable({trendData}: TrendTableProps): JSX.Element {
+export function TrendTable({trendData}: TrendTableProps): JSX.Element {
   const { classes } = useStyles();
 
   return (

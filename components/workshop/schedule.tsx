@@ -1,4 +1,3 @@
-import Chip from 'components/chip/chip';
 import styles from './workshop.module.scss';
 import {
   Center,
@@ -11,6 +10,7 @@ import {
   ThemeIcon,
   Tooltip
   } from '@mantine/core';
+import { Chip } from 'components/chip/chip';
 import { IsProductWithKey, SetState } from 'types';
 import { useEffect, useState } from 'react';
 

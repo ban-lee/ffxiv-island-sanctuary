@@ -1,6 +1,6 @@
-import SanctuaryForm from 'components/sanctuary-form/sanctuary-form';
 import { Badge, Burger, Group, Menu, Title } from '@mantine/core';
 import { openModal } from '@mantine/modals';
+import { SanctuaryForm } from 'components/sanctuary-form/sanctuary-form';
 import { SanctuaryInfo, SetState } from 'types';
 import { useMediaQuery } from '@mantine/hooks';
 import { useState } from 'react';
@@ -10,7 +10,7 @@ interface MainMenuProps {
   setSanctuary: SetState<SanctuaryInfo>;
 }
 
-export default function MainMenu({sanctuary, setSanctuary}: MainMenuProps): JSX.Element {
+export function MainMenu({sanctuary, setSanctuary}: MainMenuProps): JSX.Element {
   const isMobile = useMediaQuery('(max-width: 400px)');
   const isSmall = useMediaQuery('(min-width: 400px) and (max-width: 620px)');
   const [isMenuOpen, setIsMenuOpen] = useState(false);

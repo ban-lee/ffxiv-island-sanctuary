@@ -1,4 +1,3 @@
-import React from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import {
   createStyles,
@@ -34,7 +33,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function Header({children, title}: HeaderProps) {
+export function Header({children, title}: HeaderProps) {
   const isMobile = useMediaQuery('(max-width: 400px)');
   const { classes } = useStyles();
 

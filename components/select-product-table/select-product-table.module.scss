@@ -1,0 +1,66 @@
+.select-filters {
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+
+  > div {
+    margin-bottom: 0 !important;
+  }
+}
+
+.select-table {
+  overflow: overlay;
+  height: 600px;
+
+  table {
+    font-size: 14px;
+    margin-bottom: 0;
+    table-layout: fixed;
+
+    tr {
+      cursor: default;
+    }
+
+    td {
+      vertical-align: middle;
+    }
+  }
+
+  .col-product {
+    width: 60%;
+  }
+  .col-time {
+    width: 10%;
+  }
+  .col-value {
+    width: 10%;
+  }
+  .col-trend {
+    width: 15%;
+  }
+  .col-shift {
+    width: 25%;
+  }
+}
+
+.modifier, .demand-shift {
+  display: flex;
+  gap: 8px;
+}
+
+.modifier {
+  .icon-container {
+    font-size: 18px;
+    line-height: 21px;
+    height: 22px;
+    width: 22px;
+  }
+}
+
+.demand-shift {
+  .icon-container {
+    font-size: 18px;
+    line-height: 21px;
+    height: 22px;
+    width: 22px;
+  }
+}

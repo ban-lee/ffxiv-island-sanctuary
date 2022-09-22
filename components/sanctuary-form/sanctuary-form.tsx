@@ -15,7 +15,7 @@ function getValue(id: string): string {
   return (document.getElementById(id) as HTMLInputElement).value;
 }
 
-export default function SanctuaryForm({sanctuary, setSanctuary}: SanctuaryFormProps): JSX.Element {
+export function SanctuaryForm({sanctuary, setSanctuary}: SanctuaryFormProps): JSX.Element {
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     console.log(e);

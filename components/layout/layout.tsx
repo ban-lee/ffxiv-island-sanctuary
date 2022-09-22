@@ -10,7 +10,7 @@ const GITHUB_URL = 'https://github.com/ban-lee/ffxiv-island-sanctuary';
 const ISLAND_SANCTUARY_SHEET_URL =
     `https://docs.google.com/spreadsheets/d/1e5dyaHSt5lj25l3nFWO5QcPmAJ2aAoPxCWj-iZnKxRk/edit#gid=1283864903`;
 
-export default function Layout({ children, layoutProps }: { children: React.ReactNode, layoutProps: LayoutProps }) {
+export function Layout({ children, layoutProps }: { children: React.ReactNode, layoutProps: LayoutProps }) {
   return (
     <>
       <Head>

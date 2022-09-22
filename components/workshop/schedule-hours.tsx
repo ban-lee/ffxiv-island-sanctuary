@@ -1,4 +1,4 @@
-import { createStyles, Grid, Group } from '@mantine/core';
+import { createStyles, Grid } from '@mantine/core';
 
 interface ScheduleHoursProps {
   availableHours: number;
@@ -19,7 +19,7 @@ const useStyles = createStyles({
   },
 });
 
-export default function ScheduleHours({availableHours, usedHours}: ScheduleHoursProps): JSX.Element {
+export function ScheduleHours({availableHours, usedHours}: ScheduleHoursProps): JSX.Element {
   const { classes, cx } = useStyles();
 
   return (

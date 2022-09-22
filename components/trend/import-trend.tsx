@@ -13,7 +13,7 @@ interface ImportTrendProps {
 const EXAMPLE_SHEET_URL =
     'https://docs.google.com/spreadsheets/d/1af0E8NkUIRMLf6dIY8pnMyUdjC9H5CQiAmH9Jaa4R6U/edit?usp=sharing';
 
-export default function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
+export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
 
   const onChangeTrendData = useMemo(() => debounce((e: ChangeEvent) => {
     try {
