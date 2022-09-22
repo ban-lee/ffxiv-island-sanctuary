@@ -25,35 +25,23 @@
     }
   }
 
-  .col-product {
-    width: 60%;
-  }
   .col-time {
-    width: 10%;
+    width: 65px;
   }
   .col-value {
-    width: 10%;
+    width: 65px;
   }
   .col-trend {
-    width: 15%;
+    width: 100px;
   }
   .col-shift {
-    width: 25%;
+    width: 140px;
   }
 }
 
-.modifier, .demand-shift {
+.demand-shift {
   display: flex;
   gap: 8px;
-}
-
-.modifier {
-  .icon-container {
-    font-size: 18px;
-    line-height: 21px;
-    height: 22px;
-    width: 22px;
-  }
 }
 
 .demand-shift {

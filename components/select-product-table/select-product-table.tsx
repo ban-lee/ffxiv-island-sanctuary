@@ -1,9 +1,9 @@
 import data from 'data/island-sanctuary.json';
 import styles from './select-product-table.module.scss';
-import { calculateModifier, calculateNormalizedValue } from 'utils/workshop';
 import { ChangeEvent, CSSProperties, useEffect, useState } from 'react';
 import { DemandShift, IsItemTrend, IsProduct } from 'types';
-import { NativeSelect, Table } from '@mantine/core';
+import { Group, NativeSelect, Table, ThemeIcon, Tooltip } from '@mantine/core';
+import { TrendChip } from 'components/trend-chip/trend-chip';
 
 interface SelectProductTableProps {
   rank: number;
@@ -32,37 +32,6 @@ function productFilter(
   const isRankRequirementMet = rank >= current.rank;
 
   return !matchSameProduct && matchProductCat && matchAvailableHours && matchTimeFilter && isRankRequirementMet;
-}
-
-function getTrend(trend? : IsItemTrend): JSX.Element {
-  if (!trend) return <></>;
-
-  const mod = calculateModifier(trend);
-  const normVal = calculateNormalizedValue(trend);
-
-  let color = ''
-  let icon = '';
-  if (mod < 1) {
-    color = `rgba(220, 53, 69, ${normVal/100})`;
-    icon = 'bi-arrow-down-circle-fill';
-  }
-  else if (mod > 1) {
-    color = `rgba(32, 201, 151, ${normVal/100})`;
-    icon = 'bi-arrow-up-circle-fill';
-  }
-
-  const style: CSSProperties = {
-    'color': color,
-  };
-
-  return (
-    <div className={styles.modifier}>
-    <div className={`${styles['icon-container']}`} style={style}>
-      <i className={`bi ${icon}`}></i>
-    </div>
-    <div>{mod.toFixed(2)}</div>
-  </div>
-  );
 }
 
 function getDemandShift(trend? : IsItemTrend): JSX.Element {
@@ -137,7 +106,7 @@ export function SelectProductTable(
         <td>{product.item}</td>
         <td>{product.time}</td>
         <td>{product.value}</td>
-        <td>{getTrend(trend)}</td>
+        <td><TrendChip trend={trend} /></td>
         <td>{getDemandShift(trend)}</td>
       </>
     )
@@ -146,7 +115,7 @@ export function SelectProductTable(
   return (
     <div>
       <div className={styles['select-filters']}>
-        <h5>Filters</h5>
+        <h4>Filters</h4>
         <NativeSelect
             id="time-filter"
             label="Time"
@@ -166,7 +135,16 @@ export function SelectProductTable(
               <th className={styles['col-product']}>Product</th>
               <th className={styles['col-time']}>Time</th>
               <th className={styles['col-value']}>Value</th>
-              <th className={styles['col-trend']}>Trend</th>
+              <th className={styles['col-trend']}>
+                <Tooltip label="Value modifier from Popularity and Supply">
+                  <Group>
+                    Trend
+                    <ThemeIcon size="xs" radius="lg">
+                      <i className="bi bi-question"></i>
+                    </ThemeIcon>
+                  </Group>
+                </Tooltip>
+              </th>
               <th className={styles['col-shift']}>Demand Shift</th>
             </tr>
           </thead>
