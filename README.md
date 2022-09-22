@@ -11,5 +11,4 @@ wasn't enough and scheduling took forever. So I made a small tool to help!
 [Google Sheet](https://docs.google.com/spreadsheets/d/1e5dyaHSt5lj25l3nFWO5QcPmAJ2aAoPxCWj-iZnKxRk/edit#gid=1283864903)!
 
 ## References
-- Scrollbar styling from the article [Easy Overlay Scrollbars with Reactive Design](https://dev.to/jonosellier/easy-overlay-scrollbars-variable-width-1mbh)
 - Local storage hook [Local Storage in React](https://www.robinwieruch.de/local-storage-react/)

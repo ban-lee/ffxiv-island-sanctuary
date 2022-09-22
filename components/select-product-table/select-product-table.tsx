@@ -2,7 +2,14 @@ import data from 'data/island-sanctuary.json';
 import styles from './select-product-table.module.scss';
 import { ChangeEvent, CSSProperties, useEffect, useState } from 'react';
 import { DemandShift, IsItemTrend, IsProduct } from 'types';
-import { Group, NativeSelect, Table, ThemeIcon, Tooltip } from '@mantine/core';
+import {
+  Group,
+  NativeSelect,
+  ScrollArea,
+  Table,
+  ThemeIcon,
+  Tooltip
+  } from '@mantine/core';
 import { TrendChip } from 'components/trend-chip/trend-chip';
 
 interface SelectProductTableProps {
@@ -104,8 +111,8 @@ export function SelectProductTable(
     return (
       <>
         <td>{product.item}</td>
-        <td>{product.time}</td>
-        <td>{product.value}</td>
+        <td css={{textAlign: 'center'}}>{product.time}</td>
+        <td css={{textAlign: 'center'}}>{product.value}</td>
         <td><TrendChip trend={trend} /></td>
         <td>{getDemandShift(trend)}</td>
       </>
@@ -128,7 +135,7 @@ export function SelectProductTable(
             onChange={onTimeFilterChange}>
         </NativeSelect>
       </div>
-      <div className={styles['select-table']}>
+      <ScrollArea className={styles['select-table']}>
         <Table fontSize="sm" highlightOnHover>
           <thead>
             <tr>
@@ -158,7 +165,7 @@ export function SelectProductTable(
             })}
           </tbody>
         </Table>
-      </div>
+      </ScrollArea>
     </div>
   );
 }

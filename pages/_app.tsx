@@ -4,7 +4,6 @@ import { ModalsProvider } from '@mantine/modals';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'styles/globals.scss';
 import 'styles/colors.scss';
-import 'styles/scrollbar.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
