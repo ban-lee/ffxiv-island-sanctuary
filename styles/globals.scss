@@ -38,43 +38,7 @@ a {
   min-height: 32px;
 }
 
-.input-group-btn--sm {
-  font-size: 11px;
-
-  height: 12px;
-  line-height: 12px;
-  width: 12px;
-}
-
-input:read-only {
+input[type=text]:read-only {
   cursor: default;
   pointer-events: none;
-}
-
-.btn-icon--sml {
-  border: 0;
-  font-size: 16px;
-  line-height: 16px;
-  padding: 0;
-  height: 24px;
-  width: 24px;
-}
-
-.btn-icon--med {
-  border: 0;
-  font-size: 20px;
-  line-height: 20px;
-  padding: 0;
-  height: 28px;
-  width: 28px;
-}
-
-.btn-icon--lrg {
-  border: 0;
-  font-size: 32px;
-  line-height: 32px;
-  padding: 0;
-
-  height: 40px;
-  width: 40px;
 }

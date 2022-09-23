@@ -52,7 +52,7 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
     return (
       <>
         <div>
-          Import tab-separated values for the popularity, supply and demand shift of each product. <br />
+          Import tab-separated values for the popularity, supply and demand shift of each handicraft. <br />
           <a href={EXAMPLE_SHEET_URL} target="_blank" rel="noreferrer">Example Sheet</a>
           <div className="spacer2"></div>
         </div>

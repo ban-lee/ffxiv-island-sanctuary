@@ -3,8 +3,8 @@
 wasn't enough and scheduling took forever. So I made a small tool to help!
 
 **Features**
-- Choose only the products the give the coveted Efficiency Bonus!
-- View the Popularity x Supply value bonus next to the products!
+- Choose only the handicrafts the give an Efficiency Bonus!
+- View the Popularity x Supply value bonus next to the handicrafts!
 
 ## Credits
 - Many thanks to Nekkowe who compiled a ton of data and info on the Island Sanctuary Workshops in this amazing

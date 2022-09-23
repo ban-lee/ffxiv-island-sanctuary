@@ -11,12 +11,12 @@ interface ProgressSection {
 interface ScheduleHoursProps {
   availableHours: number;
   usedHours: number;
+  fillWidth?: boolean;
 }
 
 const useStyles = createStyles({
   scheduledHours: {
-    margin: '16px auto 8px auto',
-    maxWidth: 350,
+    margin: '0 auto',
   },
   grid: {
     textAlign: 'center',
@@ -27,7 +27,7 @@ const useStyles = createStyles({
   },
 });
 
-export function ScheduleHours({availableHours, usedHours}: ScheduleHoursProps): JSX.Element {
+export function ScheduleHours({availableHours, usedHours, fillWidth = false}: ScheduleHoursProps): JSX.Element {
   const { classes } = useStyles();
   const [scheduledHours, setScheduledHours] = useState<ProgressSection[]>([]);
 
@@ -47,7 +47,7 @@ export function ScheduleHours({availableHours, usedHours}: ScheduleHoursProps): 
   }, [availableHours, usedHours]);
 
   return (
-    <div className={classes.scheduledHours}>
+    <div className={classes.scheduledHours} css={{maxWidth: fillWidth ? '' : 350}}>
       <Progress
           aria-label="Amount of time scheduled"
           color="yellow"

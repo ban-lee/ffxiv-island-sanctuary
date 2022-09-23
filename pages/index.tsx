@@ -67,6 +67,7 @@ const IslandSanctuaryPage: NextPage = () => {
                   backgroundColor: theme.colors.gray[1],
                   border: `1px solid ${theme.colors.gray[2]}`,
                   boxShadow: theme.shadows.sm,
+                  minWidth: 200,
                   maxWidth: 500,
                   padding: 8,
                   width: '30%',

@@ -105,12 +105,12 @@ export function Schedule({selectedProducts, setSelectedProducts}: ScheduleProps)
             </Center>
             <Text align="center" mb="sm">Workshop is empty</Text>
             <Text align="justify" size="sm" mb="xs">
-              <b>Add <i className="bi bi-arrow-down"></i></b>: To add products starting from the start to end of the
+              <b>Add <i className="bi bi-arrow-down"></i></b>: To add handicrafts starting from the start to end of the
               cycle.
             </Text>
             <Text align="justify" size="sm">
-              <b>Add <i className="bi bi-arrow-up"></i></b>: To add products starting from the end to the start of the
-              cycle.
+              <b>Add <i className="bi bi-arrow-up"></i></b>: To add handicrafts starting from the end to the start of
+              the cycle.
             </Text>
           </Container>
         </Center>}

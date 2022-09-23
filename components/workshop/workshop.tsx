@@ -83,19 +83,20 @@ export function Workshop({
     <>
       <div>
         <Title order={3}>{title}</Title>
+        <div className="spacer2"></div>
         <ScheduleHours
             availableHours={availableHours}
             usedHours={usedHours} />
       </div>
       <Group
           position="center"
-          sx={{padding: '8px 0'}}
+          sx={{padding: '16px 0'}}
           spacing="xs">
         <div>
           <Button
               disabled={availableHours < 4}
               onClick={() => showItemSelect(InsertMode.BELOW)}
-              aria-label="Add products from start"
+              aria-label="Add handicrafts from start"
               rightIcon={<i className="bi bi-arrow-down"></i>}>
             Add
           </Button>
@@ -104,7 +105,7 @@ export function Workshop({
         <div>
           <Button
               disabled={availableHours < 4}
-              aria-label="Add products from end"
+              aria-label="Add handicrafts from end"
               onClick={() => showItemSelect(InsertMode.ABOVE)}
               rightIcon={<i className="bi bi-arrow-up"></i>}>
             Add
@@ -114,7 +115,7 @@ export function Workshop({
           <Button
               color="red"
               disabled={selectedProducts.length === 0}
-              aria-label="Remove all products from schedule"
+              aria-label="Remove all handicrafts from schedule"
               onClick={() => onClearProducts()}
               rightIcon={<i className="bi bi-x-lg"></i>}>
             Remove All
@@ -130,12 +131,8 @@ export function Workshop({
           size="xl"
           opened={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          title={<Title order={3}>Select Products</Title>}>
+          title={<Title order={3}>Select Handicrafts</Title>}>
         <>
-          <ScheduleHours
-              availableHours={availableHours}
-              usedHours={usedHours}
-          />
           <SelectProductTable
               rank={sanctuaryInfo.rank}
               onSelectProduct={onSelectProduct}
