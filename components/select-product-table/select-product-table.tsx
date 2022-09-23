@@ -13,10 +13,10 @@ import {
   Tooltip
   } from '@mantine/core';
 import { ChangeEvent, useEffect, useState } from 'react';
-import { DemandShiftChip } from 'components/demand-shift-chip/demand-shift-chip';
+import { DemandShiftChip } from 'components/trend/demand-shift-chip';
 import { IsItemTrend, IsProduct } from 'types';
 import { ScheduleHours } from 'components/workshop/schedule-hours';
-import { TrendChip } from 'components/trend-chip/trend-chip';
+import { TrendChip } from 'components/trend/trend-chip';
 
 interface SelectProductTableProps {
   rank: number;

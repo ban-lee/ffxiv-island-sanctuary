@@ -1,6 +1,6 @@
 import { Badge, Burger, Group, Menu, Title } from '@mantine/core';
 import { openModal } from '@mantine/modals';
-import { SanctuaryForm } from 'components/sanctuary-form/sanctuary-form';
+import { SanctuaryForm } from 'components/sanctuary/sanctuary-form';
 import { SanctuaryInfo, SetState } from 'types';
 import { useMediaQuery } from '@mantine/hooks';
 import { useState } from 'react';
