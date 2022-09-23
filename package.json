@@ -9,7 +9,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "New-Item out/.nojekyll -type file && git add out/ && git commit -m \"Deploy web app to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
+    "deploy": "copy NUL out/.nojekyll && git add out/ && git commit -m \"Deploy web app to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
