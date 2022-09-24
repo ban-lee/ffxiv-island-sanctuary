@@ -23,6 +23,13 @@ function MyApp({ Component, pageProps }: AppProps) {
                 },
               },
             },
+            breakpoints: {
+              xs: 400,
+              sm: 700,
+              md: 1000,
+              lg: 1275,
+              xl: 1800,
+            },
           }}>
         <ModalsProvider>
           <Component {...pageProps} />

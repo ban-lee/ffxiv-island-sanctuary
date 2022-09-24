@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { createStyles, Divider, Group, ScrollArea, Text } from '@mantine/core';
+import { Header } from './header';
 
 const useStyles = createStyles(() => ({
   footer: {
@@ -8,9 +9,15 @@ const useStyles = createStyles(() => ({
   },
 }));
 
+interface HeaderDetails {
+  title?: string;
+  headerMenu?: JSX.Element;
+}
+
 interface LayoutProps {
   title: string;
   description: string;
+  headerDetails: HeaderDetails;
 };
 
 const GITHUB_URL = 'https://github.com/ban-lee/ffxiv-island-sanctuary';
@@ -29,9 +36,14 @@ export function Layout({ children, layoutProps }: { children: React.ReactNode, l
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <ScrollArea sx={{height: '100vh'}}>
+        <Header
+            title={layoutProps.headerDetails.title || layoutProps.title}
+            headerMenu={layoutProps.headerDetails.headerMenu}/>
+        <div className="spacer2"></div>
         <main>
           {children}
         </main>
+        <div className="spacer1"></div>
         <footer className={classes.footer}>
           <Divider pb={16} />
           <Group grow align="center" noWrap>
