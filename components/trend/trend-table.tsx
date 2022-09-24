@@ -37,13 +37,13 @@ export function TrendTable({trendData}: TrendTableProps): JSX.Element {
                 <td>{trend.demandShift}</td>
               </tr>);
           })}
-          {trendData.size === 0 &&
-            <div>
-              <div className="spacer2"></div>
-              No trend data found!
-            </div>}
         </tbody>
       </Table>
+      {trendData.size === 0 &&
+        <div>
+          <div className="spacer2"></div>
+          No trend data found!
+        </div>}
     </div>
   );
 }

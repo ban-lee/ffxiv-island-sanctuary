@@ -1,4 +1,5 @@
 import { Badge, Burger, Group, Menu, Title } from '@mantine/core';
+import { Cycle } from './cycle';
 import { openModal } from '@mantine/modals';
 import { SanctuaryForm } from 'components/sanctuary-form/sanctuary-form';
 import { SanctuaryInfo, SetState } from 'types';
@@ -27,6 +28,7 @@ export function MainMenu({sanctuary, setSanctuary}: MainMenuProps): JSX.Element 
 
   return (
     <Group noWrap>
+      <Cycle />
       <Badge color="dark" size={isMobile ? 'sm' : (isSmall ? 'md' : 'lg')}>
         Rank: {sanctuary.rank}
       </Badge>
