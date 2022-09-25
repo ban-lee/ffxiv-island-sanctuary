@@ -1,13 +1,13 @@
 import { Button, Textarea, Title } from '@mantine/core';
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { debounce } from 'lodash';
-import { IsItemTrend } from 'types';
+import { IsItemTrend, TrendData } from 'types';
 import { openModal } from '@mantine/modals';
 import { parse } from 'csv-parse/sync';
 import { SetState } from 'types';
 
 interface ImportTrendProps {
-  setTrendData: SetState<Map<string, IsItemTrend>>;
+  setTrendData: SetState<TrendData>;
 }
 
 const EXAMPLE_SHEET_URL =
@@ -38,7 +38,10 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
         } as IsItemTrend;
       });
 
-      setTrendData(() => new Map(data.map((it) => [it.item, it])));
+      setTrendData(() => ({
+        importDate: new Date(),
+        data: new Map(data.map((it) => [it.item, it])),
+      }));
     } catch(e) {
       console.error(e);
     }
@@ -76,7 +79,7 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
 
   return (
     <>
-      <Button onClick={showTrendImport}>Import Trends</Button>
+      <Button onClick={showTrendImport}>Import Data</Button>
     </>
   );
 }

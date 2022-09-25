@@ -5,7 +5,7 @@ import { Header } from './header';
 const useStyles = createStyles(() => ({
   footer: {
     margin: '0 16px',
-    padding: 16,
+    padding: '16px 8px',
   },
 }));
 
@@ -39,7 +39,7 @@ export function Layout({ children, layoutProps }: { children: React.ReactNode, l
         <Header
             title={layoutProps.headerDetails.title || layoutProps.title}
             headerMenu={layoutProps.headerDetails.headerMenu}/>
-        <div className="spacer2"></div>
+        <div className="spacer1"></div>
         <main>
           {children}
         </main>

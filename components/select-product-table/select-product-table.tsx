@@ -1,8 +1,8 @@
 import data from 'data/island-sanctuary.json';
-import styles from './select-product-table.module.scss';
 import {
   Accordion,
   Checkbox,
+  createStyles,
   Grid,
   Group,
   NativeSelect,
@@ -28,25 +28,65 @@ interface SelectProductTableProps {
   usedHours: number;
 }
 
+const useStyles = createStyles((theme) => ({
+  // Accordion Styles API
+  control: {
+    backgroundColor: theme.colors.gray[1],
+    '&:hover': {
+      backgroundColor: theme.colors.gray[2],
+    },
+  },
+  panel: {
+    backgroundColor: theme.colors.gray[1],
+  },
+
+  // Table styles
+  selectTable: {
+    height: 600,
+    'table': {
+      tableLayout: 'fixed',
+      'tr': {
+        cursor: 'default',
+      },
+      'td': {
+        verticalAlign: 'middle',
+      },
+    },
+
+    '.col-time': {
+      width: 65,
+    },
+    '.col-value': {
+      width: 65,
+    },
+    '.col-trend': {
+      width: 120,
+    },
+    '.col-shift': {
+      width: 140,
+    },
+  },
+}));
+
 function productFilter(
-    current: IsProduct,
-    lastSelected: IsProduct|undefined,
-    availableHours: number,
-    timeFilterValue: number,
-    rank: number,
-    onlyBonusAllowed: boolean,
-  ): boolean {
+  current: IsProduct,
+  lastSelected: IsProduct | undefined,
+  availableHours: number,
+  timeFilterValue: number,
+  rank: number,
+  onlyBonusAllowed: boolean,
+): boolean {
   const matchSameProduct = current.id === lastSelected?.id;
   const matchProductCat =
-      !lastSelected ||
-      current.purposeCat === lastSelected.purposeCat ||
-      (!!current.materialCat && current.materialCat === lastSelected.materialCat);
+    !lastSelected ||
+    current.purposeCat === lastSelected.purposeCat ||
+    (!!current.materialCat && current.materialCat === lastSelected.materialCat);
   const matchAvailableHours = availableHours >= current.time;
   const matchTimeFilter = timeFilterValue === 0 || current.time === timeFilterValue;
   const isRankRequirementMet = rank >= current.rank;
 
   return (!onlyBonusAllowed || (!matchSameProduct && matchProductCat)) &&
-      matchAvailableHours && matchTimeFilter && isRankRequirementMet;
+    matchAvailableHours && matchTimeFilter && isRankRequirementMet;
 }
 
 export function SelectProductTable(
@@ -58,6 +98,7 @@ export function SelectProductTable(
     availableHours,
     usedHours,
   }: SelectProductTableProps): JSX.Element {
+  const { classes } = useStyles();
   const [onlyBonusAllowed, setOnlyBonusAllowed] = useState(true);
   const [timeFilterValue, setTimeFilterValue] = useState<number>(0);
   const [displayProducts, setDisplayProducts] = useState<IsProduct[]>(data.products);
@@ -80,8 +121,8 @@ export function SelectProductTable(
     return (
       <>
         <td>{product.item}</td>
-        <td css={{textAlign: 'center'}}>{product.time}</td>
-        <td css={{textAlign: 'center'}}>{product.value}</td>
+        <td css={{ textAlign: 'center' }}>{product.time}</td>
+        <td css={{ textAlign: 'center' }}>{product.value}</td>
         <td><TrendChip trend={trend} /></td>
         <td><DemandShiftChip trend={trend} /></td>
       </>
@@ -94,9 +135,15 @@ export function SelectProductTable(
           availableHours={availableHours}
           usedHours={usedHours}
           fillWidth
-        />
+      />
       <div className="spacer1"></div>
-      <Accordion variant="filled" defaultValue="filters">
+      <Accordion
+          classNames={{
+            control: classes.control,
+            panel: classes.panel,
+          }}
+          variant="filled"
+          defaultValue="filters">
         <Accordion.Item value="filters">
           <Accordion.Control
               icon={<i className="bi bi-funnel"></i>}
@@ -125,10 +172,10 @@ export function SelectProductTable(
                 <NativeSelect
                     id="time-filter"
                     data={[
-                      {value: '0', label: 'None'},
-                      {value: '4', label: '4'},
-                      {value: '6', label: '6'},
-                      {value: '8', label: '8'},
+                      { value: '0', label: 'None' },
+                      { value: '4', label: '4' },
+                      { value: '6', label: '6' },
+                      { value: '8', label: '8' },
                     ]}
                     onChange={onTimeFilterChange}
                 />
@@ -137,7 +184,7 @@ export function SelectProductTable(
                 <label htmlFor="efficiency-bonus">Efficiency Bonus Only</label>
               </Grid.Col>
               <Grid.Col span={7}>
-                <div css={{margin: '0 0 0 auto', width: 'fit-content'}}>
+                <div css={{ margin: '0 0 0 auto', width: 'fit-content' }}>
                   <Checkbox
                       id="efficiency-bonus"
                       checked={onlyBonusAllowed}
@@ -150,26 +197,26 @@ export function SelectProductTable(
         </Accordion.Item>
       </Accordion>
       <div className="spacer2"></div>
-      <ScrollArea className={styles['select-table']}>
+      <ScrollArea className={classes.selectTable}>
         <Table
-            fontSize="sm"
+            fontSize={14}
             highlightOnHover>
           <thead>
             <tr>
-              <th className={styles['col-product']}>Product</th>
-              <th className={styles['col-time']}>Time</th>
-              <th className={styles['col-value']}>Value</th>
-              <th className={styles['col-trend']}>
+              <th className="col-product">Product</th>
+              <th className="col-time">Time</th>
+              <th className="col-value">Value</th>
+              <th className="col-trend">
                 <Tooltip label="Value modifier from Popularity and Supply" withinPortal>
                   <Group>
-                    Trend
+                    Multiplier
                     <ThemeIcon size="xs" radius="lg">
                       <i className="bi bi-question"></i>
                     </ThemeIcon>
                   </Group>
                 </Tooltip>
               </th>
-              <th className={styles['col-shift']}>Demand Shift</th>
+              <th className="col-shift">Demand Shift</th>
             </tr>
           </thead>
           <tbody>

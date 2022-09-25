@@ -88,3 +88,8 @@ export interface SanctuaryInfo {
   workshop2Level: number;
   workshop3Level: number;
 }
+
+export interface TrendData {
+  importDate?: Date,
+  data: Map<string, IsItemTrend>;
+}

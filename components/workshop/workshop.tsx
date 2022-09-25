@@ -1,6 +1,6 @@
-import { Button, Group, Modal, Title } from '@mantine/core';
+import { Button, Group, Modal, Paper, Title } from '@mantine/core';
 import { getId } from 'utils/id-utils';
-import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
+import { IsProduct, IsProductWithKey, SanctuaryInfo, TrendData } from 'types';
 import { Schedule } from './schedule';
 import { ScheduleHours } from './schedule-hours';
 import { SelectProductTable } from 'components/select-product-table/select-product-table';
@@ -16,7 +16,7 @@ interface WorkshopProps {
   storageKeyPrefix: string;
   sanctuaryInfo: SanctuaryInfo;
   title: string;
-  trendData: Map<string, IsItemTrend>;
+  trendData: TrendData;
 }
 
 export function Workshop({
@@ -80,9 +80,23 @@ export function Workshop({
   }, [availableHours, usedHours, selectedProducts]);
 
   return (
-    <>
+    <Paper
+        sx={(theme) => ({
+          backgroundColor: theme.colors.gray[1],
+          minWidth: 300,
+          maxWidth: 475,
+        })}
+        p={8}
+        shadow="sm"
+        withBorder>
       <div>
-        <Title order={3}>{title}</Title>
+        <Title order={3}
+            sx={{
+              textAlign: 'center',
+              padding: '4px 8px 0 8px',
+            }}>
+          {title}
+        </Title>
         <div className="spacer2"></div>
         <ScheduleHours
             availableHours={availableHours}
@@ -137,12 +151,12 @@ export function Workshop({
               rank={sanctuaryInfo.rank}
               onSelectProduct={onSelectProduct}
               lastSelected={lastSelectedProduct}
-              trendData={trendData}
+              trendData={trendData.data}
               availableHours={availableHours}
               usedHours={usedHours}
           />
         </>
       </Modal>
-    </>
+    </Paper>
   );
 }
