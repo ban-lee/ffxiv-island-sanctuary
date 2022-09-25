@@ -1,18 +1,19 @@
 import dayjs from 'dayjs';
+import isoWeek from 'dayjs/plugin/isoWeek';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import utc from 'dayjs/plugin/utc';
 
+dayjs.extend(isoWeek);
 dayjs.extend(relativeTime);
 dayjs.extend(utc);
 
 export function calculateCycleInfo(): {cycle: number, timeRemaining: string} {
-  const tomorrow = dayjs().startOf('day').add(1, 'day').add(8, 'hour').utc();
   const today = dayjs().utc();
-  // Season resets every week at Tues, 8 AM UTC
-  const lastReset = today.startOf('week').add(2, 'day').add(8, 'hour');
+  const nextCycleStart = today.startOf('day').add(today.hour() >= 8 ? 1 : 0, 'day').add(8, 'hour');
+  const seasonStart = today.startOf('isoWeek').add(2, 'day').add(8, 'hour');
 
   return {
-    cycle: today.diff(lastReset, 'day') + 1,
-    timeRemaining: today.to(tomorrow),
+    cycle: today.diff(seasonStart, 'day') + 1,
+    timeRemaining: today.to(nextCycleStart),
   };
 }
