@@ -2,8 +2,7 @@ import { AppProps } from 'next/app';
 import { MantineProvider } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'styles/globals.scss';
-import 'styles/colors.scss';
+import 'styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
