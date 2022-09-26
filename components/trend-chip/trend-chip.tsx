@@ -1,10 +1,10 @@
 import { calculateModifier, calculateNormalizedValue } from 'utils/workshop';
 import { CSSProperties } from 'react';
 import { Grid, Group, HoverCard, Text, ThemeIcon } from '@mantine/core';
-import { IsItemTrend } from 'types';
+import { IsProductTrend } from 'types';
 
 interface TrendChipProps {
-  trend?: IsItemTrend;
+  trend?: IsProductTrend;
 }
 
 export function TrendChip({trend}: TrendChipProps): JSX.Element {

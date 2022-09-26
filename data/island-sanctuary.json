@@ -1101,341 +1101,408 @@
       }
     }
   ],
-  "itemPouch": [
+  "items": [
     {
       "id": 0,
       "item": "Island Palm Leaf",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 1,
       "item": "Island Apple",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 2,
       "item": "Island Branch",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 3,
       "item": "Island Stone",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 4,
       "item": "Island Clam",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 5,
       "item": "Island Laver",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 6,
       "item": "Island Coral",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 7,
       "item": "Islewort",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 8,
       "item": "Island Sand",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 9,
       "item": "Island Log",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 10,
       "item": "Island Palm Log",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 11,
       "item": "Island Vine",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 12,
       "item": "Island Sap",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 13,
       "item": "Island Copper Ore",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 14,
       "item": "Island Limestone",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 15,
       "item": "Island Rock Salt",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 16,
       "item": "Island Sugarcane",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 17,
       "item": "Island Cotton Boll",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 18,
       "item": "Island Hemp",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 19,
       "item": "Island Clay",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 20,
       "item": "Island Tinsand",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 21,
       "item": "Island Iron Ore",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 22,
       "item": "Island Quartz",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 23,
       "item": "Island Leucogranite",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 24,
       "item": "Islefish",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 25,
       "item": "Island Squid",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 26,
       "item": "Island Jellyfish",
-      "type": 1
+      "category": 1,
+      "method": "gathering"
     },
     {
       "id": 27,
       "item": "Island Alyssum",
-      "type": 1
+      "category": 2,
+      "method": "granary"
     },
     {
       "id": 28,
       "item": "Raw Island Garnet",
-      "type": 1
+      "category": 2,
+      "method": "granary"
     },
     {
       "id": 29,
       "item": "Island Spruce Log",
-      "type": 1
+      "category": 2,
+      "method": "granary"
     },
     {
       "id": 30,
       "item": "Island Hammerhead",
-      "type": 1
+      "category": 2,
+      "method": "granary"
     },
     {
       "id": 31,
       "item": "Island Silver Ore",
-      "type": 1
+      "category": 2,
+      "method": "granary"
     },
     {
       "id": 32,
       "item": "Island Popoto Set",
-      "type": 3
+      "category": 3,
+      "method": "gathering"
     },
     {
       "id": 33,
       "item": "Island Cabbage Seeds",
-      "type": 3
+      "category": 3,
+      "method": "gathering"
     },
     {
       "id": 34,
       "item": "Isleberry Seeds",
-      "type": 3
+      "category": 3,
+      "method": "farm_shop"
     },
     {
       "id": 35,
       "item": "Island Pumpkin Seeds",
-      "type": 3
+      "category": 3,
+      "method": "gathering"
     },
     {
       "id": 36,
       "item": "Island Onion Set",
-      "type": 3
+      "category": 3,
+      "method": "farm_shop"
     },
     {
       "id": 37,
       "item": "Island Tomato Seeds",
-      "type": 3
+      "category": 3,
+      "method": "shop"
     },
     {
       "id": 38,
       "item": "Island Wheat Seeds",
-      "type": 3
+      "category": 3,
+      "method": "shop"
     },
     {
       "id": 39,
       "item": "Island Corn Seeds",
-      "type": 3
+      "category": 3,
+      "method": "shop"
     },
     {
       "id": 40,
       "item": "Island Parsnip Seeds",
-      "type": 3
+      "category": 3,
+      "method": "gathering"
     },
     {
       "id": 41,
       "item": "Island Radish Seeds",
-      "type": 3
+      "category": 3,
+      "method": "farm_shop"
     },
     {
       "id": 42,
       "item": "Island Popoto",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 43,
       "item": "Island Cabbage",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 44,
       "item": "Isleberry",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 45,
       "item": "Island Pumpkin",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 46,
       "item": "Island Onion",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 47,
       "item": "Island Tomato",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 48,
       "item": "Island Wheat",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 49,
       "item": "Island Corn",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 50,
       "item": "Island Parsnip",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 51,
       "item": "Island Radish",
-      "type": 4
+      "category": 4,
+      "method": "farm"
     },
     {
       "id": 52,
       "item": "Sanctuary Fleece",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 53,
       "item": "Sanctuary Claw",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 54,
       "item": "Sanctuary Fur",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 55,
       "item": "Sanctuary Feather",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 56,
       "item": "Sanctuary Egg",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 57,
       "item": "Sanctuary Carapace",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 58,
       "item": "Sanctuary Fang",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 59,
       "item": "Sanctuary Horn",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 60,
       "item": "Sanctuary Milk",
-      "type": 5
+      "category": 5,
+      "method": "pasture"
     },
     {
       "id": 61,
       "item": "Island Sweetfeed",
-      "type": 6
+      "category": 6,
+      "method": "crafting"
     },
     {
       "id": 62,
       "item": "Island Greenfeed",
-      "type": 6
+      "category": 6,
+      "method": "crafting"
     },
     {
       "id": 63,
       "item": "Premium Island Greenfeed",
-      "type": 6
+      "category": 6,
+      "method": "crafting"
     },
     {
       "id": 64,
       "item": "Makeshift Net",
-      "type": 7
+      "category": 7,
+      "method": "crafting"
     },
     {
       "id": 65,
       "item": "Makeshift Restraint",
-      "type": 7
+      "category": 7,
+      "method": "crafting"
     },
     {
       "id": 66,
       "item": "Makeshift Soporific",
-      "type": 7
+      "category": 7,
+      "method": "crafting"
     }
   ]
 }

@@ -14,7 +14,7 @@ import {
   } from '@mantine/core';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { DemandShiftChip } from 'components/demand-shift-chip/demand-shift-chip';
-import { IsItemTrend, IsProduct } from 'types';
+import { IsProduct, IsProductTrend } from 'types';
 import { ScheduleHours } from 'components/workshop/schedule-hours';
 import { TrendChip } from 'components/trend-chip/trend-chip';
 
@@ -22,7 +22,7 @@ interface SelectProductTableProps {
   rank: number;
   lastSelected?: IsProduct;
   onSelectProduct: (product: IsProduct) => void;
-  trendData: Map<string, IsItemTrend>;
+  trendData: Map<string, IsProductTrend>;
 
   availableHours: number;
   usedHours: number;

@@ -1,7 +1,7 @@
 import { Button, Textarea, Title } from '@mantine/core';
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo } from 'react';
 import { debounce } from 'lodash';
-import { IsItemTrend, TrendData } from 'types';
+import { IsProductTrend, TrendData } from 'types';
 import { openModal } from '@mantine/modals';
 import { parse } from 'csv-parse/sync';
 import { SetState } from 'types';
@@ -24,7 +24,7 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
         skip_empty_lines: true,
       });
 
-      const data: IsItemTrend[] = parsedRaw.map((raw: string[]) => {
+      const data: IsProductTrend[] = parsedRaw.map((raw: string[]) => {
         const item = raw[0];
         const popularity = raw[1];
         const supply = raw[2];
@@ -35,7 +35,7 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
           popularity,
           supply,
           demandShift,
-        } as IsItemTrend;
+        } as IsProductTrend;
       });
 
       setTrendData(() => ({

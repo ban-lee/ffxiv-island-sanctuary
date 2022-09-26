@@ -1,4 +1,4 @@
-import { IsItemTrend, Popularity, Supply } from 'types';
+import { IsProductTrend, Popularity, Supply } from 'types';
 
 export const POPULARITY = new Map<Popularity, number>([
   [Popularity.UNKNOWN, 1],
@@ -17,11 +17,11 @@ export const SUPPLY = new Map<Supply, number>([
   [Supply.OVERFLOWING, 0.6],
 ]);
 
-export function calculateModifier(trendData: IsItemTrend) {
+export function calculateModifier(trendData: IsProductTrend) {
   return POPULARITY.get(trendData.popularity)! * SUPPLY.get(trendData.supply)!;
 }
 
-export function calculateNormalizedValue(trendData: IsItemTrend) {
+export function calculateNormalizedValue(trendData: IsProductTrend) {
   const modifier = calculateModifier(trendData);
 
   if (modifier === 1) {

@@ -1,9 +1,9 @@
 import { CSSProperties } from 'react';
-import { DemandShift, IsItemTrend } from 'types';
+import { DemandShift, IsProductTrend } from 'types';
 import { Group, ThemeIcon } from '@mantine/core';
 
 interface DemandShiftChipProps {
-  trend?: IsItemTrend;
+  trend?: IsProductTrend;
 }
 
 export function DemandShiftChip({trend}: DemandShiftChipProps) {
