@@ -1,21 +1,30 @@
-import { Button, Group } from '@mantine/core';
+import {
+  Box,
+  Center,
+  Container,
+  createStyles,
+  Group,
+  SegmentedControl,
+  SegmentedControlItem,
+  Tabs,
+  Text
+  } from '@mantine/core';
 import { cloneDeep } from 'lodash';
-import { Header } from 'components/layout/header';
-import { ImportTrend } from 'components/trend/import-trend';
-import { IsItemTrend, SanctuaryInfo } from 'types';
 import { Layout } from 'components/layout/layout';
 import { MainMenu } from 'components/main-menu/main-menu';
 import { NextPage } from 'next';
+import { SanctuaryInfo, TrendData } from 'types';
 import { TrendTable } from 'components/trend/trend-table';
+import { useCycle } from 'hooks/useCycle';
+import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useState } from 'react';
 import { Workshop } from 'components/workshop/workshop';
 
 const TITLE = 'Island Sanctuary Planner';
 
 enum View {
-  WORKSHOPS,
-  TREND_DATA,
+  WORKSHOPS = 'workshops',
+  TREND_DATA = 'trendData',
 }
 
 const DEFAULT_SANCTUARY_INFO: SanctuaryInfo = {
@@ -25,86 +34,140 @@ const DEFAULT_SANCTUARY_INFO: SanctuaryInfo = {
   workshop3Level: 1,
 };
 
-const IslandSanctuaryPage: NextPage = () => {
-  const [view, setView] = useState(View.WORKSHOPS);
-  const [viewButtonText, setViewButtonText] = useState('View Trends');
-  const [trendData, setTrendData] = useLocalStorage<Map<string, IsItemTrend>>('is-trend-data', new Map());
-  const [sanctuary, setSanctuary] = useLocalStorage('is-sanctuary', cloneDeep(DEFAULT_SANCTUARY_INFO));
+const useStyles = createStyles({
+  cycleSelect: {
+    '.today': {
+      '> div:first-of-type': {
+        display: 'block',
+      },
+      '> div:last-of-type': {
+        marginLeft: 10,
+      },
+    },
+  },
+});
 
-  function toggleTrendView() {
-    if (view === View.WORKSHOPS) {
-      setView(View.TREND_DATA);
-      setViewButtonText('View Workshops');
-    } else {
-      setView(View.WORKSHOPS);
-      setViewButtonText('View Trends');
+const IslandSanctuaryPage: NextPage = () => {
+  const { classes, cx } = useStyles();
+  const cycleInfo = useCycle();
+  const [sanctuary, setSanctuary] = useLocalStorage('is-sanctuary', cloneDeep(DEFAULT_SANCTUARY_INFO));
+  const [selectedCycle, setSelectedCycle] = useState(`${cycleInfo.cycle}`);
+  const [trendData, setTrendData] = useLocalStorage<TrendData>(`is-trend-data-${selectedCycle}`, {data: new Map()});
+
+  const generateCycleSelectItems = () => {
+    const data: SegmentedControlItem[] = [];
+    for (let i = 1; i <= 7; i++) {
+      const cycle = `${i}`;
+      data.push({
+        value: cycle,
+        label: (
+          <Center id={`cycle-select-${cycle}`}>
+            <Box sx={{display: 'none'}}><i className="bi bi-calendar-check"></i></Box>
+            <Box>{cycle}</Box>
+          </Center>
+        ),
+      });
     }
-  }
+    return data;
+  };
+
+  useEffect(() => {
+    for (let i = 1; i <= 7; i++) {
+      const element = document.getElementById(`cycle-select-${i}`);
+      if (!element) return;
+
+      if (i === cycleInfo.cycle) {
+        element.classList.add('today');
+      } else {
+        element.classList.remove('today');
+      }
+    }
+  }, [cycleInfo, classes, cx]);
 
   return (
     <Layout layoutProps={{
       title: TITLE,
       description: 'Workshop Helper',
-  }}>
+      headerDetails: {
+        title: TITLE,
+        headerMenu: (<MainMenu sanctuary={sanctuary} setSanctuary={setSanctuary}></MainMenu>),
+      },
+    }}>
     <>
-      <Header title={TITLE}>
-        <MainMenu sanctuary={sanctuary} setSanctuary={setSanctuary}></MainMenu>
-      </Header>
+      <Container
+          sx={{
+            marginLeft: 0,
+            maxWidth: 500,
+            paddingBottom: 16,
+          }}>
+        <Text size="sm" weight="bold">Current Season</Text>
+        <SegmentedControl
+            className={classes.cycleSelect}
+            size="sm"
+            radius="md"
+            color="pink"
+            fullWidth
+            value={selectedCycle}
+            onChange={(value) => setSelectedCycle(value)}
+            data={generateCycleSelectItems()}
+        />
+      </Container>
+      <Tabs sx={{margin: '0 24px'}} defaultValue={View.WORKSHOPS}>
+        <Tabs.List>
+          <Tabs.Tab
+              value={View.WORKSHOPS}
+              icon={<i className="bi bi-gear-fill" />}
+              color="yellow">
+            Workshops
+          </Tabs.Tab>
+          <Tabs.Tab
+              value={View.TREND_DATA}
+              icon={<i className="bi bi-bar-chart-fill" />}
+              color="violet">
+            Supply &#38; Demand
+          </Tabs.Tab>
+        </Tabs.List>
 
-      <div css={{paddingBottom: 16}}>
+        <Tabs.Panel value={View.WORKSHOPS} pt={16}>
+          <Group
+              grow
+              position="center"
+              spacing={16}>
+            <Workshop
+                metadata={{
+                  id: 1,
+                  title: "Workshop 1",
+                }}
+                selectedCycle={selectedCycle}
+                sanctuaryInfo={sanctuary}
+                trendData={trendData} />
+            <Workshop
+                metadata={{
+                  id: 2,
+                  title: "Workshop 2",
+                }}
+                selectedCycle={selectedCycle}
+                sanctuaryInfo={sanctuary}
+                trendData={trendData} />
+            <Workshop
+                metadata={{
+                  id: 3,
+                  title: "Workshop 3",
+                }}
+                selectedCycle={selectedCycle}
+                sanctuaryInfo={sanctuary}
+                trendData={trendData} />
+          </Group>
+        </Tabs.Panel>
 
-        <Group align="center" position="center">
-          <ImportTrend setTrendData={setTrendData} />
-          <Button color="violet" onClick={() => toggleTrendView()}>{viewButtonText}</Button>
-        </Group>
-
-        <div className={'spacer2'}></div>
-
-        {view === View.WORKSHOPS &&
-          <Group grow position="center"
-              sx={(theme) => ({
-                '> div': {
-                  backgroundColor: theme.colors.gray[1],
-                  border: `1px solid ${theme.colors.gray[2]}`,
-                  boxShadow: theme.shadows.sm,
-                  minWidth: 200,
-                  maxWidth: 500,
-                  padding: 8,
-                  width: '30%',
-                },
-                'h3': {
-                  textAlign: 'center',
-                  padding: '4px 8px 0 8px',
-                },
-                gap: 16,
-                margin: '0 16px',
-              })}>
-            <div>
-              <Workshop
-                  title="Workshop 1"
-                  storageKeyPrefix={'w1-'}
-                  sanctuaryInfo={sanctuary}
-                  trendData={trendData} />
-            </div>
-            <div>
-              <Workshop
-                  title="Workshop 2"
-                  storageKeyPrefix={'w2-'}
-                  sanctuaryInfo={sanctuary}
-                  trendData={trendData} />
-            </div>
-            <div>
-              <Workshop
-                  title="Workshop 3"
-                  storageKeyPrefix={'w3-'}
-                  sanctuaryInfo={sanctuary}
-                  trendData={trendData} />
-            </div>
-          </Group>}
-        {view === View.TREND_DATA &&
-          <TrendTable trendData={trendData}></TrendTable>
-        }
-      </div>
+        <Tabs.Panel value={View.TREND_DATA} pt={16}>
+          <TrendTable
+              selectedCycle={selectedCycle}
+              trendData={trendData}
+              setTrendData={setTrendData}
+          />
+        </Tabs.Panel>
+      </Tabs>
     </>
   </Layout>);
 }

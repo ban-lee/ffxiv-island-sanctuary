@@ -1,10 +1,10 @@
-import { Button, Group, Modal, Title } from '@mantine/core';
+import { Button, Group, Modal, Paper, Title } from '@mantine/core';
 import { getId } from 'utils/id-utils';
-import { IsItemTrend, IsProduct, IsProductWithKey, SanctuaryInfo } from 'types';
+import { IsProduct, IsProductWithKey, SanctuaryInfo, TrendData, WorkshopData } from 'types';
 import { Schedule } from './schedule';
 import { ScheduleHours } from './schedule-hours';
 import { SelectProductTable } from 'components/select-product-table/select-product-table';
-import { useCallback, useEffect, useState } from 'react';
+import { SetStateAction, useCallback, useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
 enum InsertMode {
@@ -12,21 +12,29 @@ enum InsertMode {
   BELOW,
 }
 
-interface WorkshopProps {
-  storageKeyPrefix: string;
-  sanctuaryInfo: SanctuaryInfo;
+interface WorkshopMetadata {
+  id: number;
   title: string;
-  trendData: Map<string, IsItemTrend>;
+}
+
+interface WorkshopProps {
+  metadata: WorkshopMetadata;
+  selectedCycle: string;
+  sanctuaryInfo: SanctuaryInfo;
+  trendData: TrendData;
 }
 
 export function Workshop({
-  storageKeyPrefix,
+  metadata,
+  selectedCycle,
   sanctuaryInfo,
-  title,
   trendData,
 }: WorkshopProps): JSX.Element {
-  const [selectedProducts, setSelectedProducts] =
-      useLocalStorage<IsProductWithKey[]>(`${storageKeyPrefix}is-selected-products`, []);
+  const [workshopData, setWorkshopData] =
+      useLocalStorage<WorkshopData>(
+        `is-workshop-${metadata.id}-${selectedCycle}`,
+        {selectedProducts: []}
+      );
   const [availableHours, setAvailableHours] = useState(24);
   const [usedHours, setUsedHours] = useState(0);
   const [insertMode, setInsertMode] = useState(InsertMode.BELOW);
@@ -34,16 +42,16 @@ export function Workshop({
   const [lastSelectedProduct, setLastSelectedProduct] = useState<IsProductWithKey|undefined>();
 
   const updateLastSelected = useCallback(() => {
-    if (selectedProducts.length === 0) {
+    if (workshopData.selectedProducts.length === 0) {
       setLastSelectedProduct(undefined);
     } else {
       const lastProduct =
         insertMode === InsertMode.BELOW
-          ? selectedProducts[selectedProducts.length - 1]
-          : selectedProducts[0];
+          ? workshopData.selectedProducts[workshopData.selectedProducts.length - 1]
+          : workshopData.selectedProducts[0];
       setLastSelectedProduct(lastProduct);
     }
-  }, [insertMode, selectedProducts]);
+  }, [insertMode, workshopData]);
 
   const showItemSelect = (mode: InsertMode) => {
     setInsertMode(() => mode);
@@ -51,19 +59,38 @@ export function Workshop({
   };
 
   const onSelectProduct = (product: IsProduct) => {
-    setSelectedProducts((curr) => {
+    setWorkshopData((curr) => {
       const productWithKey: IsProductWithKey = {
         key: getId('is'),
         ...product,
       };
-      return insertMode === InsertMode.BELOW
-        ? [...curr, productWithKey]
-        : [productWithKey, ...curr];
+      const selectedProducts =
+        insertMode === InsertMode.BELOW
+          ? [...curr.selectedProducts, productWithKey]
+          : [productWithKey, ...curr.selectedProducts];
+
+      return {
+        ...curr,
+        selectedProducts,
+      };
     });
   };
 
-  function onClearProducts() {
-    setSelectedProducts([]);
+  const setSelectedProducts = (value: SetStateAction<IsProductWithKey[]>) => {
+    const newValue = typeof value === 'function' ? value(workshopData.selectedProducts) : value;
+    setWorkshopData({
+      ...workshopData,
+      selectedProducts: newValue,
+    });
+  }
+
+  const onClearProducts = () => {
+    setWorkshopData((curr) => {
+      return {
+        ...curr,
+        selectedProducts: [],
+      };
+    });
   }
 
   useEffect(() => {
@@ -71,18 +98,32 @@ export function Workshop({
   }, [updateLastSelected]);
 
   useEffect(() => {
-    const usedHours = selectedProducts.reduce((prev, curr) => {
+    const usedHours = workshopData.selectedProducts.reduce((prev, curr) => {
       return prev + curr.time;
     }, 0);
 
     setAvailableHours(24 - usedHours);
     setUsedHours(usedHours);
-  }, [availableHours, usedHours, selectedProducts]);
+  }, [availableHours, usedHours, workshopData]);
 
   return (
-    <>
+    <Paper
+        sx={(theme) => ({
+          backgroundColor: theme.colors.gray[1],
+          minWidth: 300,
+          maxWidth: `475px !important`,
+        })}
+        p={8}
+        shadow="sm"
+        withBorder>
       <div>
-        <Title order={3}>{title}</Title>
+        <Title order={3}
+            sx={{
+              textAlign: 'center',
+              padding: '4px 8px 0 8px',
+            }}>
+          {metadata.title}
+        </Title>
         <div className="spacer2"></div>
         <ScheduleHours
             availableHours={availableHours}
@@ -114,7 +155,7 @@ export function Workshop({
         <div>
           <Button
               color="red"
-              disabled={selectedProducts.length === 0}
+              disabled={workshopData.selectedProducts.length === 0}
               aria-label="Remove all handicrafts from schedule"
               onClick={() => onClearProducts()}
               rightIcon={<i className="bi bi-x-lg"></i>}>
@@ -123,7 +164,7 @@ export function Workshop({
         </div>
       </Group>
       <Schedule
-        selectedProducts={selectedProducts}
+        selectedProducts={workshopData.selectedProducts}
         setSelectedProducts={setSelectedProducts}
       />
       <Modal
@@ -137,12 +178,12 @@ export function Workshop({
               rank={sanctuaryInfo.rank}
               onSelectProduct={onSelectProduct}
               lastSelected={lastSelectedProduct}
-              trendData={trendData}
+              trendData={trendData.data}
               availableHours={availableHours}
               usedHours={usedHours}
           />
         </>
       </Modal>
-    </>
+    </Paper>
   );
 }

@@ -9,6 +9,3 @@ wasn't enough and scheduling took forever. So I made a small tool to help!
 ## Credits
 - Many thanks to Nekkowe who compiled a ton of data and info on the Island Sanctuary Workshops in this amazing
 [Google Sheet](https://docs.google.com/spreadsheets/d/1e5dyaHSt5lj25l3nFWO5QcPmAJ2aAoPxCWj-iZnKxRk/edit#gid=1283864903)!
-
-## References
-- Local storage hook [Local Storage in React](https://www.robinwieruch.de/local-storage-react/)

@@ -1,19 +1,20 @@
 import { Button, Textarea, Title } from '@mantine/core';
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo } from 'react';
 import { debounce } from 'lodash';
-import { IsItemTrend } from 'types';
+import { IsProductTrend, TrendData } from 'types';
 import { openModal } from '@mantine/modals';
 import { parse } from 'csv-parse/sync';
 import { SetState } from 'types';
 
 interface ImportTrendProps {
-  setTrendData: SetState<Map<string, IsItemTrend>>;
+  selectedCycle: string;
+  setTrendData: SetState<TrendData>;
 }
 
 const EXAMPLE_SHEET_URL =
     'https://docs.google.com/spreadsheets/d/1af0E8NkUIRMLf6dIY8pnMyUdjC9H5CQiAmH9Jaa4R6U/edit?usp=sharing';
 
-export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
+export function ImportTrend({ selectedCycle, setTrendData }: ImportTrendProps): JSX.Element {
 
   const onChangeTrendData = useMemo(() => debounce((e: ChangeEvent) => {
     try {
@@ -24,7 +25,7 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
         skip_empty_lines: true,
       });
 
-      const data: IsItemTrend[] = parsedRaw.map((raw: string[]) => {
+      const data: IsProductTrend[] = parsedRaw.map((raw: string[]) => {
         const item = raw[0];
         const popularity = raw[1];
         const supply = raw[2];
@@ -35,14 +36,18 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
           popularity,
           supply,
           demandShift,
-        } as IsItemTrend;
+        } as IsProductTrend;
       });
 
-      setTrendData(() => new Map(data.map((it) => [it.item, it])));
+      setTrendData({
+        importDate: new Date(),
+        cycle: selectedCycle,
+        data: new Map(data.map((it) => [it.item, it])),
+      });
     } catch(e) {
       console.error(e);
     }
-  }, 200), [setTrendData]);
+  }, 200), [selectedCycle, setTrendData]);
 
   useEffect(() => {
     return () => (onChangeTrendData.cancel());
@@ -76,7 +81,7 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
 
   return (
     <>
-      <Button onClick={showTrendImport}>Import Trends</Button>
+      <Button onClick={showTrendImport}>Import Data</Button>
     </>
   );
 }

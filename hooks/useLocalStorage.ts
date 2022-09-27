@@ -1,55 +1,40 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import isEqual from 'lodash/isEqual';
+import superjson from 'superjson';
+import { SetState } from 'types';
+import { useEffect, useState } from 'react';
+import { useLocalStorage as _useLocalStorage } from '@mantine/hooks';
 
-function replacer(unused: string, value: unknown) {
-  if(value instanceof Map) {
-    return {
-      dataType: 'Map',
-      value: Array.from(value.entries()),
-    };
-  } else if(value instanceof Set) {
-    return {
-      dataType: 'Set',
-      value: Array.from(value.entries()),
-    };
-  }
-
-  return value;
+function deserialize<T>(str: string|undefined|null, defaultValue: T): T {
+  return (str === undefined || str === null) ? defaultValue : superjson.parse(str);
 }
 
-function reviver(unused: string, value: unknown) {
-  if(typeof value === 'object' && value !== null) {
-    const castedValue = value as {[key: string]: unknown};
-    if ('dataType' in castedValue && castedValue['dataType'] === 'Map') {
-      return new Map(castedValue.value as []);
-    } else if ('dataType' in castedValue && castedValue['dataType'] === 'Set') {
-      return new Set(castedValue.value as []);
-    }
-  }
-  return value;
-}
-
-const useLocalStorage = <T>(storageKey: string, fallbackState: T): [T, Dispatch<SetStateAction<T>>] => {
-  const [value, setValue] = useState<T>(fallbackState);
+const useLocalStorage = <T = string>(storageKey: string, defaultValue: T): [T, SetState<T>] => {
+  const [key, setKey] = useState(storageKey);
+  const [defaultVal, setDefaultVal] = useState(defaultValue);
+  const [lsValue, setLsValue] = _useLocalStorage<T>({
+    key: storageKey,
+    defaultValue,
+    serialize: superjson.stringify,
+    deserialize: superjson.parse,
+  });
 
   useEffect(() => {
-    try {
-      const storageValue = localStorage.getItem(storageKey);
-      if (storageValue) {
-        setValue(JSON.parse(storageValue, reviver));
-      }
-    } catch (e) {
-      console.error(e);
-    }
+    if (key === storageKey) return;
 
-    // On Init only
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setKey(storageKey);
+
+    const valueFromStorage = deserialize(localStorage.getItem(storageKey), defaultVal);
+    setLsValue(valueFromStorage);
+
+  }, [storageKey, key, defaultVal, setLsValue]);
 
   useEffect(() => {
-    localStorage.setItem(storageKey, JSON.stringify(value, replacer));
-  }, [value, storageKey]);
+    if (isEqual(defaultVal, defaultValue)) return;
 
-  return [value, setValue];
+    setDefaultVal(defaultValue);
+  }, [defaultValue, defaultVal]);
+
+  return [lsValue, setLsValue];
 };
 
 export { useLocalStorage };

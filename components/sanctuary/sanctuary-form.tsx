@@ -18,7 +18,6 @@ function getValue(id: string): string {
 export function SanctuaryForm({sanctuary, setSanctuary}: SanctuaryFormProps): JSX.Element {
   function onSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log(e);
 
     setSanctuary({
       ...sanctuary,

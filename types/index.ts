@@ -44,7 +44,30 @@ export enum DemandShift {
   SKYROCKETING = 'Skyrocketing',
 }
 
-export interface IsItemTrend {
+export enum ItemCategory {
+  UNKNOWN,
+  MATERIAL,
+  RARE_MATERIAL,
+  GARDEN_STARTER,
+  PRODUCE,
+  LEAVINGS,
+  FEED,
+  RESTRAINT,
+  TOOL,
+  HANDICRAFT,
+}
+
+export enum ItemMethod {
+  UNKNOWN = '',
+  GATHERING = 'gathering',
+  GRANARY = 'granary',
+  FARM_SHOP = 'farm_shop',
+  FARM = 'farm',
+  PASTURE = 'pasture',
+  CRAFTING = 'crafting',
+}
+
+export interface IsProductTrend {
   id?: number;
   item: string;
 
@@ -76,10 +99,11 @@ export interface IsProductWithKey extends IsProduct {
   key: string;
 }
 
-export interface IsItemPouch {
+export interface IsItem {
   id: number;
   item: string;
-  type: number;
+  category: ItemCategory;
+  method: ItemMethod;
 }
 
 export interface SanctuaryInfo {
@@ -87,4 +111,14 @@ export interface SanctuaryInfo {
   workshop1Level: number;
   workshop2Level: number;
   workshop3Level: number;
+}
+
+export interface TrendData {
+  importDate?: Date;
+  cycle?: string;
+  data: Map<string, IsProductTrend>;
+}
+
+export interface WorkshopData {
+  selectedProducts: IsProductWithKey[];
 }

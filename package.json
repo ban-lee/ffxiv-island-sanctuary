@@ -9,7 +9,7 @@
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "New-Item out/.nojekyll -type file && git add out/ && git commit -m \"Deploy web app to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
+    "deploy": "copy NUL out/.nojekyll && git add out/ && git commit -m \"Deploy web app to GitHub Pages\" && git subtree push --prefix out origin gh-pages"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -20,11 +20,12 @@
     "@mantine/next": "^5.4.0",
     "bootstrap-icons": "^1.9.1",
     "csv-parse": "^5.3.0",
+    "dayjs": "^1.11.5",
     "lodash": "^4.17.21",
     "next": "^12.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.54.9",
+    "superjson": "^1.10.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

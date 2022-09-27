@@ -8,9 +8,8 @@ import {
   } from '@mantine/core';
 
 interface HeaderProps {
-  children?: React.ReactNode;
   title: string;
-  homeRoute?: string;
+  headerMenu?: React.ReactNode;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -33,7 +32,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function Header({children, title}: HeaderProps) {
+export function Header({title, headerMenu}: HeaderProps) {
   const isMobile = useMediaQuery('(max-width: 400px)');
   const { classes } = useStyles();
 
@@ -60,14 +59,13 @@ export function Header({children, title}: HeaderProps) {
             <i className="icon bi-sun-fill"></i>
           </ThemeIcon>
         </div>
-        <MediaQuery smallerThan={620} styles={isMobile ? mobileHeader : smallHeader}>
+        <MediaQuery smallerThan="sm" styles={isMobile ? mobileHeader : smallHeader}>
           <Title order={1} sx={{flex: '1 1 auto'}}>{title}</Title>
         </MediaQuery>
         <div>
-          {children}
+          {headerMenu}
         </div>
       </MantineHeader>
-      <div className="spacer2"></div>
     </>
   );
 }
