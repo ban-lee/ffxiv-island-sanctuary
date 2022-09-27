@@ -1,5 +1,6 @@
 import { ImportTrend } from './import-trend';
 import { SetState, TrendData } from 'types';
+import { useLocale } from 'hooks/useLocale';
 import {
   Center,
   createStyles,
@@ -13,6 +14,7 @@ import {
 } from '@mantine/core';
 
 interface TrendTableProps {
+  selectedCycle: string;
   trendData: TrendData;
   setTrendData: SetState<TrendData>;
 }
@@ -26,8 +28,9 @@ const useStyles = createStyles(() => ({
   },
 }));
 
-export function TrendTable({ trendData, setTrendData }: TrendTableProps): JSX.Element {
+export function TrendTable({ selectedCycle, trendData, setTrendData }: TrendTableProps): JSX.Element {
   const { classes } = useStyles();
+  const locale = useLocale();
 
   return (
     <div>
@@ -37,10 +40,13 @@ export function TrendTable({ trendData, setTrendData }: TrendTableProps): JSX.El
             Supply &#38; Demand
           </Title>
           {!!trendData.importDate &&
-              <Text>Imported on: {trendData.importDate.toLocaleDateString()}</Text>}
+              <Text size="sm">Imported on: {trendData.importDate.toLocaleDateString(locale)}</Text>}
         </Stack>
         <div className={classes.headerControls}>
-          <ImportTrend setTrendData={setTrendData} />
+          <ImportTrend
+              selectedCycle={selectedCycle}
+              setTrendData={setTrendData}
+          />
         </div>
       </Group>
 

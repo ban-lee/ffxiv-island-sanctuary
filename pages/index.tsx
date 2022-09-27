@@ -1,13 +1,23 @@
-import { calculateCycleInfo } from 'utils/season-util';
+import {
+  Box,
+  Center,
+  Container,
+  createStyles,
+  Group,
+  SegmentedControl,
+  SegmentedControlItem,
+  Tabs,
+  Text
+  } from '@mantine/core';
 import { cloneDeep } from 'lodash';
-import { Container, Group, SegmentedControl, Tabs, Text } from '@mantine/core';
 import { Layout } from 'components/layout/layout';
 import { MainMenu } from 'components/main-menu/main-menu';
 import { NextPage } from 'next';
 import { SanctuaryInfo, TrendData } from 'types';
 import { TrendTable } from 'components/trend/trend-table';
+import { useCycle } from 'hooks/useCycle';
+import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
-import { useState } from 'react';
 import { Workshop } from 'components/workshop/workshop';
 
 const TITLE = 'Island Sanctuary Planner';
@@ -24,10 +34,55 @@ const DEFAULT_SANCTUARY_INFO: SanctuaryInfo = {
   workshop3Level: 1,
 };
 
+const useStyles = createStyles({
+  cycleSelect: {
+    '.today': {
+      '> div:first-of-type': {
+        display: 'block',
+      },
+      '> div:last-of-type': {
+        marginLeft: 10,
+      },
+    },
+  },
+});
+
 const IslandSanctuaryPage: NextPage = () => {
-  const [trendData, setTrendData] = useLocalStorage<TrendData>('is-trend-data', {data: new Map()});
+  const { classes, cx } = useStyles();
+  const cycleInfo = useCycle();
   const [sanctuary, setSanctuary] = useLocalStorage('is-sanctuary', cloneDeep(DEFAULT_SANCTUARY_INFO));
-  const [selectedCycle, setSelectedCycle] = useState(`${calculateCycleInfo().cycle}`);
+  const [selectedCycle, setSelectedCycle] = useState(`${cycleInfo.cycle}`);
+  const [trendData, setTrendData] = useLocalStorage<TrendData>(`is-trend-data-${selectedCycle}`, {data: new Map()});
+
+  const generateCycleSelectItems = () => {
+    const data: SegmentedControlItem[] = [];
+    for (let i = 1; i <= 7; i++) {
+      const cycle = `${i}`;
+      data.push({
+        value: cycle,
+        label: (
+          <Center id={`cycle-select-${cycle}`}>
+            <Box sx={{display: 'none'}}><i className="bi bi-calendar-check"></i></Box>
+            <Box>{cycle}</Box>
+          </Center>
+        ),
+      });
+    }
+    return data;
+  };
+
+  useEffect(() => {
+    for (let i = 1; i <= 7; i++) {
+      const element = document.getElementById(`cycle-select-${i}`);
+      if (!element) return;
+
+      if (i === cycleInfo.cycle) {
+        element.classList.add('today');
+      } else {
+        element.classList.remove('today');
+      }
+    }
+  }, [cycleInfo, classes, cx]);
 
   return (
     <Layout layoutProps={{
@@ -47,13 +102,14 @@ const IslandSanctuaryPage: NextPage = () => {
           }}>
         <Text size="sm" weight="bold">Current Season</Text>
         <SegmentedControl
+            className={classes.cycleSelect}
             size="sm"
             radius="md"
             color="pink"
             fullWidth
             value={selectedCycle}
             onChange={(value) => setSelectedCycle(value)}
-            data={['1', '2', '3', '4', '5', '6', '7']}
+            data={generateCycleSelectItems()}
         />
       </Container>
       <Tabs sx={{margin: '0 24px'}} defaultValue={View.WORKSHOPS}>
@@ -78,18 +134,27 @@ const IslandSanctuaryPage: NextPage = () => {
               position="center"
               spacing={16}>
             <Workshop
-                title="Workshop 1"
-                storageKeyPrefix={'w1-'}
+                metadata={{
+                  id: 1,
+                  title: "Workshop 1",
+                }}
+                selectedCycle={selectedCycle}
                 sanctuaryInfo={sanctuary}
                 trendData={trendData} />
             <Workshop
-                title="Workshop 2"
-                storageKeyPrefix={'w2-'}
+                metadata={{
+                  id: 2,
+                  title: "Workshop 2",
+                }}
+                selectedCycle={selectedCycle}
                 sanctuaryInfo={sanctuary}
                 trendData={trendData} />
             <Workshop
-                title="Workshop 3"
-                storageKeyPrefix={'w3-'}
+                metadata={{
+                  id: 3,
+                  title: "Workshop 3",
+                }}
+                selectedCycle={selectedCycle}
                 sanctuaryInfo={sanctuary}
                 trendData={trendData} />
           </Group>
@@ -97,6 +162,7 @@ const IslandSanctuaryPage: NextPage = () => {
 
         <Tabs.Panel value={View.TREND_DATA} pt={16}>
           <TrendTable
+              selectedCycle={selectedCycle}
               trendData={trendData}
               setTrendData={setTrendData}
           />

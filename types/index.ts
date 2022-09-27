@@ -114,6 +114,11 @@ export interface SanctuaryInfo {
 }
 
 export interface TrendData {
-  importDate?: Date,
+  importDate?: Date;
+  cycle?: string;
   data: Map<string, IsProductTrend>;
+}
+
+export interface WorkshopData {
+  selectedProducts: IsProductWithKey[];
 }

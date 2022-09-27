@@ -7,13 +7,14 @@ import { parse } from 'csv-parse/sync';
 import { SetState } from 'types';
 
 interface ImportTrendProps {
+  selectedCycle: string;
   setTrendData: SetState<TrendData>;
 }
 
 const EXAMPLE_SHEET_URL =
     'https://docs.google.com/spreadsheets/d/1af0E8NkUIRMLf6dIY8pnMyUdjC9H5CQiAmH9Jaa4R6U/edit?usp=sharing';
 
-export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
+export function ImportTrend({ selectedCycle, setTrendData }: ImportTrendProps): JSX.Element {
 
   const onChangeTrendData = useMemo(() => debounce((e: ChangeEvent) => {
     try {
@@ -38,14 +39,15 @@ export function ImportTrend({setTrendData}: ImportTrendProps): JSX.Element {
         } as IsProductTrend;
       });
 
-      setTrendData(() => ({
+      setTrendData({
         importDate: new Date(),
+        cycle: selectedCycle,
         data: new Map(data.map((it) => [it.item, it])),
-      }));
+      });
     } catch(e) {
       console.error(e);
     }
-  }, 200), [setTrendData]);
+  }, 200), [selectedCycle, setTrendData]);
 
   useEffect(() => {
     return () => (onChangeTrendData.cancel());
