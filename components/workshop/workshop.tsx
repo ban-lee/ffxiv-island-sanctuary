@@ -111,8 +111,7 @@ export function Workshop({
         sx={(theme) => ({
           backgroundColor: theme.colors.gray[1],
           minWidth: 300,
-          maxWidth: 475,
-          width: '30%',
+          maxWidth: `475px !important`,
         })}
         p={8}
         shadow="sm"

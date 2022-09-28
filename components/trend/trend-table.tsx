@@ -53,7 +53,7 @@ export function TrendTable({ selectedCycle, trendData, setTrendData }: TrendTabl
       <Table fontSize="sm" highlightOnHover>
         <thead>
           <tr>
-            <th>Handicraft</th>
+            <th>Product</th>
             <th>Popularity</th>
             <th>Supply</th>
             <th>Demand Shift</th>

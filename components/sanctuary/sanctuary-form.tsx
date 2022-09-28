@@ -1,5 +1,4 @@
 import { Button, NumberInput } from '@mantine/core';
-import { closeAllModals } from '@mantine/modals';
 import { FormEvent } from 'react';
 import { SanctuaryInfo, SetState } from 'types';
 
@@ -24,8 +23,6 @@ export function SanctuaryForm({sanctuary, setSanctuary}: SanctuaryFormProps): JS
       ...sanctuary,
       rank: parseInt(getValue(FormFields.rank)),
     });
-
-    closeAllModals();
   }
 
   return (

@@ -130,6 +130,7 @@ const IslandSanctuaryPage: NextPage = () => {
 
         <Tabs.Panel value={View.WORKSHOPS} pt={16}>
           <Group
+              grow
               position="center"
               spacing={16}>
             <Workshop
