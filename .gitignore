@@ -33,3 +33,6 @@
 
 # typescript
 *.tsbuildinfo
+
+# VS Code
+.editorconfig
