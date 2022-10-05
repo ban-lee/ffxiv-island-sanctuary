@@ -2,6 +2,8 @@
 [Final Fantasy XIV](https://www.finalfantasyxiv.com/) is an amazing game but their Island Sanctuary Workshop UI just
 wasn't enough and scheduling took forever. So I made a small tool to help!
 
+[Access the Planner](https://ban-lee.github.io/ffxiv-island-sanctuary/)
+
 **Features**
 - Choose only the handicrafts the give an Efficiency Bonus!
 - View the Popularity x Supply value bonus next to the handicrafts!
