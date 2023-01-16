@@ -1,4 +1,3 @@
-import data from 'data/island-sanctuary.json';
 import {
   Accordion,
   Checkbox,
@@ -12,7 +11,8 @@ import {
   Title,
   Tooltip
   } from '@mantine/core';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { DataContext } from 'contexts/data-context';
 import { DemandShiftChip } from 'components/trend/demand-shift-chip';
 import { IsProduct, IsProductTrend } from 'types';
 import { ScheduleHours } from 'components/workshop/schedule-hours';
@@ -99,6 +99,7 @@ export function SelectProductTable(
     usedHours,
   }: SelectProductTableProps): JSX.Element {
   const { classes } = useStyles();
+  const data = useContext(DataContext);
   const [onlyBonusAllowed, setOnlyBonusAllowed] = useState(true);
   const [timeFilterValue, setTimeFilterValue] = useState<number>(0);
   const [displayProducts, setDisplayProducts] = useState<IsProduct[]>(data.products);
@@ -108,7 +109,7 @@ export function SelectProductTable(
       data.products.filter((product) => {
         return productFilter(product, lastSelected, availableHours, timeFilterValue, rank, onlyBonusAllowed);
       }));
-  }, [lastSelected, availableHours, timeFilterValue, rank, onlyBonusAllowed]);
+  }, [data, lastSelected, availableHours, timeFilterValue, rank, onlyBonusAllowed]);
 
   function onTimeFilterChange(e: ChangeEvent) {
     const value = (e.target as HTMLInputElement).value;

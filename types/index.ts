@@ -77,7 +77,6 @@ export interface IsProductTrend {
 }
 
 export interface IsMaterial {
-  id: number;
   qty: number;
   item: string;
 }
@@ -88,6 +87,7 @@ export interface IsProduct {
   material1: IsMaterial;
   material2: IsMaterial;
   material3?: IsMaterial;
+  material4?: IsMaterial;
   purposeCat: string;
   materialCat: string;
   rank: number;

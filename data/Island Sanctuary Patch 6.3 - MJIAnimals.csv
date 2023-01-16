@@ -1,0 +1,34 @@
+Key,Name,,,,,Primary,Secondary,
+0,,BNpcBase#0,0,0,0,,,0
+1,Lost Lamb,BNpcBase#14906,1,1,1,Sanctuary Fleece,Sanctuary Milk,ui/icon/070000/070121.tex
+2,Omery Karakul,BNpcBase#14907,1,2,1,Sanctuary Milk,Sanctuary Fleece,ui/icon/070000/070122.tex
+3,Opo Opo,BNpcBase#14908,1,1,2,Sanctuary Claw,Sanctuary Fur,ui/icon/070000/070123.tex
+4,Lemur,BNpcBase#14909,1,2,2,Sanctuary Fur,Sanctuary Claw,ui/icon/070000/070124.tex
+5,Apkallu,BNpcBase#14910,1,1,3,Sanctuary Fleece,Sanctuary Egg,ui/icon/070000/070125.tex
+6,Apkallu of Paradise,BNpcBase#14911,1,2,3,Sanctuary Egg,Sanctuary Fleece,ui/icon/070000/070126.tex
+7,Ground Squirrel,BNpcBase#14912,1,1,4,Sanctuary Claw,Sanctuary Fur,ui/icon/070000/070127.tex
+8,Star Marmot,BNpcBase#14913,1,2,4,Sanctuary Fur,Sanctuary Claw,ui/icon/070000/070128.tex
+9,Coblyn,BNpcBase#14914,1,1,5,Sanctuary Fang,Sanctuary Carapace,ui/icon/070000/070129.tex
+10,Yellow Coblyn,BNpcBase#14915,1,2,5,Sanctuary Carapace,Sanctuary Fang,ui/icon/070000/070130.tex
+11,Wild Dodo,BNpcBase#14916,2,1,6,Sanctuary Egg,Sanctuary Feather,ui/icon/070000/070131.tex
+12,Para. Dodo,BNpcBase#14917,2,2,6,Sanctuary Feather,Sanctuary Egg,ui/icon/070000/070132.tex
+13,Island Doe,BNpcBase#14918,2,1,7,Sanctuary Fur,Sanctuary Milk,ui/icon/070000/070133.tex
+14,Island Stag,BNpcBase#14919,2,2,7,Sanctuary Fur,Sanctuary Horn,ui/icon/070000/070134.tex
+15,Chocobo,BNpcBase#14920,2,1,8,Sanctuary Fur,Sanctuary Feather,ui/icon/070000/070135.tex
+16,Black Chocobo,BNpcBase#14921,2,2,8,Sanctuary Feather,Sanctuary Fur,ui/icon/070000/070136.tex
+17,Glyptodon Pup,BNpcBase#14922,2,1,9,Sanctuary Carapace,Sanctuary Claw,ui/icon/070000/070137.tex
+18,Glyptodon,BNpcBase#14923,2,2,9,Sanctuary Claw,Sanctuary Carapace,ui/icon/070000/070138.tex
+19,Aurochs,BNpcBase#14924,3,1,10,Sanctuary Milk,Sanctuary Horn,ui/icon/070000/070139.tex
+20,Grand Buffalo,BNpcBase#14925,3,2,10,Sanctuary Horn,Sanctuary Milk,ui/icon/070000/070140.tex
+21,Island Nanny,BNpcBase#14926,3,1,13,Sanctuary Milk,Sanctuary Horn,ui/icon/070000/070141.tex
+22,Island Billy,BNpcBase#14927,3,2,13,Sanctuary Horn,Sanctuary Fleece,ui/icon/070000/070142.tex
+23,Blue Back,BNpcBase#14928,3,1,11,Sanctuary Egg,Sanctuary Feather,ui/icon/070000/070143.tex
+24,Gold Back,BNpcBase#14929,3,2,11,Sanctuary Feather,Sanctuary Egg,ui/icon/070000/070144.tex
+25,Twinklefleece,BNpcBase#14930,1,3,12,Sanctuary Fleece,Sanctuary Fur,ui/icon/070000/070145.tex
+26,Beachcomb,BNpcBase#14931,1,3,14,Sanctuary Carapace,Sanctuary Claw,ui/icon/070000/070146.tex
+27,Passia,BNpcBase#14932,2,3,15,Sanctuary Claw,Sanctuary Fleece,ui/icon/070000/070147.tex
+28,Aligator,BNpcBase#14933,3,3,16,Sanctuary Claw,Sanctuary Fang,ui/icon/070000/070148.tex
+29,Goobbue,BNpcBase#14934,3,3,17,Sanctuary Fang,Sanctuary Claw,ui/icon/070000/070149.tex
+30,Griffin,BNpcBase#14935,3,3,18,Sanctuary Feather,Sanctuary Claw,ui/icon/070000/070150.tex
+31,Tiger of Paradise,BNpcBase#16068,2,3,21,Sanctuary Fang,Sanctuary Fur,ui/icon/070000/070151.tex
+32,Morbol Seedling,BNpcBase#16069,1,3,22,Sanctuary Carapace,Sanctuary Fang,ui/icon/070000/070152.tex

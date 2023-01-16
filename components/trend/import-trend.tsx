@@ -2,6 +2,7 @@ import { Button, Textarea, Title } from '@mantine/core';
 import { ChangeEvent, useEffect, useMemo } from 'react';
 import { debounce } from 'lodash';
 import { IsProductTrend, TrendData } from 'types';
+import { logger } from 'utils/logger';
 import { openModal } from '@mantine/modals';
 import { parse } from 'csv-parse/sync';
 import { SetState } from 'types';
@@ -45,7 +46,7 @@ export function ImportTrend({ selectedCycle, setTrendData }: ImportTrendProps): 
         data: new Map(data.map((it) => [it.item, it])),
       });
     } catch(e) {
-      console.error(e);
+      logger.error(e);
     }
   }, 200), [selectedCycle, setTrendData]);
 

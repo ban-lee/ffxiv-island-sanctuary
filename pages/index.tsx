@@ -10,15 +10,22 @@ import {
   Text
   } from '@mantine/core';
 import { cloneDeep } from 'lodash';
+import { DataContext } from 'contexts/data-context';
+import { IsItem, IsProduct, SanctuaryInfo, TrendData } from 'types';
 import { Layout } from 'components/layout/layout';
 import { MainMenu } from 'components/main-menu/main-menu';
 import { NextPage } from 'next';
-import { SanctuaryInfo, TrendData } from 'types';
+import { readItems, readProducts } from 'utils/data-utils';
 import { TrendTable } from 'components/trend/trend-table';
 import { useCycle } from 'hooks/useCycle';
 import { useEffect, useState } from 'react';
 import { useLocalStorage } from 'hooks/useLocalStorage';
 import { Workshop } from 'components/workshop/workshop';
+
+interface IslandSanctuaryPageProps {
+  products: IsProduct[];
+  items: IsItem[];
+}
 
 const TITLE = 'Island Sanctuary Planner';
 
@@ -47,7 +54,7 @@ const useStyles = createStyles({
   },
 });
 
-const IslandSanctuaryPage: NextPage = () => {
+const IslandSanctuaryPage: NextPage<IslandSanctuaryPageProps> = ({products, items}: IslandSanctuaryPageProps) => {
   const { classes, cx } = useStyles();
   const cycleInfo = useCycle();
   const [sanctuary, setSanctuary] = useLocalStorage('is-sanctuary', cloneDeep(DEFAULT_SANCTUARY_INFO));
@@ -93,7 +100,7 @@ const IslandSanctuaryPage: NextPage = () => {
         headerMenu: (<MainMenu sanctuary={sanctuary} setSanctuary={setSanctuary}></MainMenu>),
       },
     }}>
-    <>
+    <DataContext.Provider value={{products, items}}>
       <Container
           sx={{
             marginLeft: 0,
@@ -168,8 +175,20 @@ const IslandSanctuaryPage: NextPage = () => {
           />
         </Tabs.Panel>
       </Tabs>
-    </>
+    </DataContext.Provider>
   </Layout>);
+}
+
+export async function getStaticProps() {
+  const products: IsProduct[] = await readProducts();
+  const items: IsItem[] = await readItems();
+
+  return {
+    props: {
+      products,
+      items,
+    },
+  };
 }
 
 export default IslandSanctuaryPage;

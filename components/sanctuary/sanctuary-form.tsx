@@ -31,7 +31,7 @@ export function SanctuaryForm({sanctuary, setSanctuary}: SanctuaryFormProps): JS
         <NumberInput
             id={FormFields.rank}
             min={1}
-            max={10}
+            max={12}
             defaultValue={sanctuary.rank}
             label="Rank"
         />
