@@ -204,7 +204,7 @@ export function SelectProductTable(
             highlightOnHover>
           <thead>
             <tr>
-              <th className="col-product">Product</th>
+              <th className="col-product">Handicraft</th>
               <th className="col-time">Time</th>
               <th className="col-value">Value</th>
               <th className="col-trend">
