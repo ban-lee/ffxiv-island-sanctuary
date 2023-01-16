@@ -1,5 +1,12 @@
 import Head from 'next/head';
-import { createStyles, Divider, Group, ScrollArea, Text } from '@mantine/core';
+import {
+  createStyles,
+  Divider,
+  Group,
+  ScrollArea,
+  Stack,
+  Text
+  } from '@mantine/core';
 import { Header } from './header';
 
 const useStyles = createStyles(() => ({
@@ -47,9 +54,14 @@ export function Layout({ children, layoutProps }: { children: React.ReactNode, l
         <footer className={classes.footer}>
           <Divider pb={16} />
           <Group grow align="center" noWrap>
-            <Text size="sm">
-              2022 © <a href={GITHUB_URL}>Ban Lee</a>
-            </Text>
+            <Stack spacing={0}>
+              <Text size="sm">
+                v1.3.0
+              </Text>
+              <Text size="sm">
+                2022 © <a href={GITHUB_URL}>Ban Lee</a>
+              </Text>
+            </Stack>
             <Text size="sm" align="right">
               Built with Nekkowe&apos;s permission to use the data <br />
               from their&nbsp;
