@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   Center,
   CloseButton,
   Container,
@@ -145,11 +146,12 @@ export function Schedule({selectedProducts, setSelectedProducts}: ScheduleProps)
                 </Tooltip>
               </Group>
               <Tooltip label="Remove">
-                <CloseButton
-                    size="md"
+                <ActionIcon
                     aria-label={`Remove ${product.item} from schedule`}
-                    iconSize={24}
-                    onClick={() => onRemoveProduct(index)} />
+                    size={28}
+                    onClick={() => onRemoveProduct(index)}>
+                  <i className="bi bi-x-lg"></i>
+                </ActionIcon>
               </Tooltip>
             </Group>
             <Grid gutter={4} sx={(theme) => ({fontSize: theme.fontSizes.xs, textAlign: 'center'})}>

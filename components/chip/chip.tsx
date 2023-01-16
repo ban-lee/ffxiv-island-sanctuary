@@ -1,5 +1,6 @@
-import { Badge, CloseButton } from '@mantine/core';
+import { ActionIcon, Badge } from '@mantine/core';
 import { Color } from 'types';
+import { useRef } from 'react';
 
 export interface ChipOption {
   value: string;
@@ -13,22 +14,22 @@ interface ChipProps {
 }
 
 export function Chip({option, onClose}: ChipProps): JSX.Element {
-  const color = option.color ?? 'gray';
+  const color = useRef(option.color ?? 'gray');
 
   const removeButton =
     onClose ?
-      <CloseButton
+      <ActionIcon
           aria-label={option.label}
           size="xs"
-          color={color}
+          color={color.current}
           radius="lg"
           onMouseDown={onClose}>
         <i className="bi bi-x"></i>
-      </CloseButton>
+      </ActionIcon>
       : <></>;
 
   return (
-    <Badge color={color}
+    <Badge color={color.current}
         rightSection={removeButton}>
       {option.label}
     </Badge>
